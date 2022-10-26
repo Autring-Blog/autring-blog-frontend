@@ -1,0 +1,10 @@
+.signin_logo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.signin_logo>img{
+    width: 350px;
+    height: 250px;;
+}
