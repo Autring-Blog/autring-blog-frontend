@@ -1,0 +1,113 @@
+.Signup_wrapper{
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 70px 0px;
+}
+.Signup_logo{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+}
+.Signup_logo>img{
+    width: 350px;
+    height: 250px;
+}
+.head_up{   
+    line-height: 44px;
+    font-style: normal;
+    font-size: 30px;
+    font-weight: 600;
+    color: #000000;
+}
+.Signup_detail{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+.detail1{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.detail1>span{
+    /* margin-left: 35rem; */
+    text-align: left;
+    font-style: normal;
+    font-size: 20px;
+    line-height: 31px;
+
+}
+
+.detail1>input{
+    width: 500px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    /* margin-left: 35rem; */
+    border: 1px solid #000000;
+    height: 2.5rem;
+    outline: none;
+
+}
+.signup_foot{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    cursor: pointer;
+    margin-bottom: 3rem;
+}
+.signup_foot>span:nth-of-type(2){
+    text-decoration: underline;
+    font-size: 25px;
+    font-weight: 600;
+}
+.signup_foot>span:nth-of-type(1){
+    font-size: 25px;
+}
+.form_detail{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+}
+@media screen and (max-width:650px) {
+    .Signup_wrapper{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+    }
+    .Signup_logo>img{
+        width:108px;
+        height: 101px;
+    }
+    .Signup_detail{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .form_detail{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        /* margin-right: 35rem; */
+    }
+    
+ 
+
+    
+    .detail1>input{
+        width: 320px;
+        height: 44px;
+    }
+    
+    
+}
