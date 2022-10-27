@@ -39,3 +39,27 @@ img {
   font-weight: 400;
   margin-top: 0.5rem;
 }
+
+/* media query */
+
+@media (max-width: 767px) {
+  .card {
+    width: 20rem;
+    height: 13rem;
+  }
+
+  .card-image {
+    height: 10rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    width: 20rem;
+    height: 13rem;
+  }
+
+  .card-image {
+    height: 10rem;
+  }
+}

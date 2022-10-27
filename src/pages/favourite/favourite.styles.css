@@ -66,3 +66,28 @@ input:focus {
 .skip-btn:hover {
   color: rgba(0, 0, 0, 0.578);
 }
+
+/* media query */
+
+@media (max-width: 767px) {
+  .favourite {
+    padding: 0 1rem;
+  }
+
+  .card-list {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .favourite--heading {
+    font-size: 1.5rem;
+    line-height: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .card-list {
+    grid-template-columns: 1fr;
+  }
+}
