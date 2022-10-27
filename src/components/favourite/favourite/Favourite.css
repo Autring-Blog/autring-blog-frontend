@@ -69,9 +69,27 @@ input:focus {
 
 /* media query */
 
-@media (max-width: 767px) {
+@media (max-width: 867px) {
   .favourite {
     padding: 0 1rem;
+    width: 80vw;
+    margin: 0 auto;
+    margin-top: 4rem;
+  }
+
+  /* .card-list {
+    gap: 2rem;
+  } */
+}
+
+@media (max-width: 768px) {
+  .favourite {
+    padding: 0 1rem;
+    width: 80vw;
+    margin: 4rem auto;
+  }
+  .favourite--heading {
+    font-size: 1.5rem;
   }
 
   .card-list {
@@ -84,6 +102,22 @@ input:focus {
   .favourite--heading {
     font-size: 1.5rem;
     line-height: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .card-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 280px) {
+  .favourite {
+    font-size: 0.8rem;
+    margin-top: 2rem;
+  }
+  .favourite--heading {
+    font-size: 1rem;
+    line-height: 1rem;
     margin-bottom: 2rem;
   }
 

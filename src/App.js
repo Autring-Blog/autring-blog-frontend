@@ -1,5 +1,5 @@
 import './App.css';
-import Favourite from './pages/favourite/favourite.component';
+import Favourite from './components/favourite/favourite/Favourite';
 
 function App() {
   return (

@@ -1,14 +1,14 @@
 import React from 'react';
 import { useState } from 'react';
-import Card from '../../components/card/card.component';
+import FavouriteCard from '../card/FavouriteCard';
 
-import './favourite.styles.css';
+import './Favourite.css';
 
 const data = [
   {
     id: 1,
     img: 'a3dacf52205c26dbf0690c8f55aa407e1.png',
-    name: 'National',
+    name: 'International',
   },
   {
     id: 2,
@@ -18,22 +18,22 @@ const data = [
   {
     id: 3,
     img: 'a3dacf52205c26dbf0690c8f55aa407e1.png',
-    name: 'National',
+    name: 'Politics',
   },
   {
     id: 4,
     img: 'a3dacf52205c26dbf0690c8f55aa407e1.png',
-    name: 'National',
+    name: 'Defence',
   },
   {
     id: 5,
     img: 'a3dacf52205c26dbf0690c8f55aa407e1.png',
-    name: 'National',
+    name: 'Science And Technology',
   },
   {
     id: 6,
     img: 'a3dacf52205c26dbf0690c8f55aa407e1.png',
-    name: 'National',
+    name: 'Sports',
   },
 ];
 
@@ -45,8 +45,11 @@ const Favourite = () => {
     }),
   ]);
 
+  const [modalList, setModalList] = useState([]);
+
   const toggleSelect = (id) => {
     dataList[id].selectedItem = !dataList[id].selectedItem;
+    console.log(dataList);
     setDataList(dataList);
   };
 
@@ -65,7 +68,7 @@ const Favourite = () => {
       <div className='card-list'>
         {dataList.map((item, idx) => (
           <div key={idx} onClick={() => toggleSelect(idx)}>
-            <Card data={item} />
+            <FavouriteCard data={item} />
           </div>
         ))}
       </div>
@@ -79,4 +82,3 @@ const Favourite = () => {
 };
 
 export default Favourite;
-/* a3dacf52205c26dbf0690c8f55aa407e 1 */
