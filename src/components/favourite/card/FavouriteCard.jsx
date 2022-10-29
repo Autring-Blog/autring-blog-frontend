@@ -14,9 +14,11 @@ const FavouriteCard = ({ data }) => {
       <div className={`${select ? 'select' : ''}`}></div>
       <div className='black-background'></div>
       <div className='card-image'>
-        <img src={require(`../../../assets/${data.img}`)} alt='img' />
+        <img src={require(`../../../assets/images/${data.img}`)} alt='img' />
       </div>
-      <p>{data.name}</p>
+      <div className='content'>
+        <p>{data.name}</p>
+      </div>
     </div>
   );
 };

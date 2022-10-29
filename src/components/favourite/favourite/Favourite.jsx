@@ -35,6 +35,21 @@ const data = [
     img: 'a3dacf52205c26dbf0690c8f55aa407e1.png',
     name: 'Sports',
   },
+  {
+    id: 7,
+    img: 'a3dacf52205c26dbf0690c8f55aa407e1.png',
+    name: 'Education',
+  },
+  {
+    id: 8,
+    img: 'a3dacf52205c26dbf0690c8f55aa407e1.png',
+    name: 'Finance',
+  },
+  {
+    id: 9,
+    img: 'a3dacf52205c26dbf0690c8f55aa407e1.png',
+    name: 'Entertainment',
+  },
 ];
 
 const Favourite = () => {
@@ -49,8 +64,19 @@ const Favourite = () => {
 
   const toggleSelect = (id) => {
     dataList[id].selectedItem = !dataList[id].selectedItem;
-    console.log(dataList);
-    setDataList(dataList);
+    if (dataList[id].selectedItem === true) {
+      setModalList([...modalList, dataList[id].name]);
+    }
+    const selectedItem = dataList
+      .filter((item) => item.selectedItem === true)
+      .map((item) => item.name);
+
+    setModalList(selectedItem);
+  };
+
+  const handleDone = () => {
+    if (!modalList.length) return;
+    console.log(modalList);
   };
 
   return (
@@ -72,7 +98,9 @@ const Favourite = () => {
           </div>
         ))}
       </div>
-      <div className='btn btn-yellow'>Done</div>
+      <div className='btn btn-yellow' onClick={handleDone}>
+        Done
+      </div>
 
       <a href='/#' className='skip-btn'>
         Skip For Now
