@@ -1,6 +1,6 @@
 import React from 'react';
 import "./Signin.css";
-import logo from "../../../assests/images/logo.png";
+import logo from "../../../assets/images/logo.png";
 import { useNavigate } from 'react-router-dom';
 
 const Signin = () => {

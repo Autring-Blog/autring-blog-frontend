@@ -1,6 +1,6 @@
 import React from 'react';
 import "./Signup.css";
-import logo from "../../../assests/images/logo.png";
+import logo from "../../../assets/images/logo.png";
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import validator from 'validator';
