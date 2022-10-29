@@ -1,7 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
-import FavouriteCard from '../card/FavouriteCard';
-
+import FavouriteCard from './card/FavouriteCard';
 import './Favourite.css';
 
 const data = [
