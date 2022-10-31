@@ -1,0 +1,133 @@
+.hero-section {
+  margin: 0;
+  position: relative;
+}
+
+.hero-image {
+  background-image: url(../../../assets/images/hero-image.png);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 697px;
+}
+
+.hero-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  margin-top: 15rem;
+  background-color: rgba(255, 255, 255, 0.6);
+  /* position: absolute; */
+}
+
+.hero-content h2 {
+  width: 563px;
+  margin: 0 auto;
+  padding: 2rem 0;
+  font-size: 2.5rem;
+  font-weight: 500;
+}
+
+/* News content */
+
+.news-content {
+  padding: 2rem 3rem;
+}
+
+.lead {
+  text-align: left;
+  margin-bottom: 1.2rem;
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+
+.green-italic {
+  color: #2b7a0b;
+  font-style: italic;
+}
+
+.section-image {
+  margin-bottom: 1.5rem;
+}
+
+.news-card-list {
+  width: 100%;
+  height: 35rem;
+  display: flex;
+  margin-top: 1.5rem /* 24px */;
+  margin-right: 0.75rem /* 12px */;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  gap: 1rem;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent; /* make scrollbar transparent */
+}
+
+/* media query */
+
+@media (max-width: 768px) {
+  .hero-image {
+    height: 500px;
+  }
+
+  .hero-content {
+    margin-top: 8rem;
+    padding: 0 1rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .news {
+    overflow: hidden;
+  }
+
+  .hero-image {
+    height: 400px;
+  }
+
+  .hero-content {
+    margin-top: 8rem;
+    padding: 0 1rem;
+    font-size: 1.5rem;
+  }
+
+  .hero-content h2 {
+    width: 463px;
+    margin: 0 auto;
+    padding: 2rem 0;
+    font-size: 2rem;
+    font-weight: 500;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-image {
+    background-image: url(../../../assets/images/hero-image.png);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 300px;
+  }
+
+  .hero-content {
+    margin-top: 5rem;
+    padding: 0 1rem;
+  }
+
+  .hero-content h2 {
+    width: 400px;
+    margin: 0 auto;
+    padding: 1.5rem 0;
+    font-size: 1.2rem;
+    font-weight: 700;
+  }
+  .news-content {
+    padding: 1rem 1.5rem;
+  }
+}

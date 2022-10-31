@@ -76,10 +76,6 @@ input:focus {
     margin: 0 auto;
     margin-top: 4rem;
   }
-
-  /* .card-list {
-    gap: 2rem;
-  } */
 }
 
 @media (max-width: 768px) {
