@@ -28,7 +28,7 @@ const Signup = () => {
       };
 
     const handlesignin = () => {
-        navigate('/')
+        navigate('/signin')
     }
     const handleChange = (event) => {
         const pass = event.target.value;
