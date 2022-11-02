@@ -1,12 +1,31 @@
 import React from 'react';
 import "./Signup.css";
-import logo from "../../../assests/images/logo.png";
+import logo from "../../../assets/images/logo.png";
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import validator from 'validator';
 
 const Signup = () => {
     const navigate = useNavigate();
-    const [states, setStates] = useState({ name: '', email: '', contact: '', password: '', confirmpass: '', error: false })
+    const [states, setStates] = useState({ name: '', email: '', contact: '', password: '', confirmpass: '', error: false , err:false})
+    const validateEmail = () => {
+        var email = states.email
+    
+        if (validator.isEmail(email)) {
+            setStates({
+                ...states,
+                err: false
+            })
+            return true;
+
+        } else {
+            setStates({
+                ...states,
+                err: true
+            })
+            return false;
+        }
+      };
 
     const handlesignin = () => {
         navigate('/')
@@ -32,12 +51,17 @@ const Signup = () => {
     }
     const handleSubmit =(e) => {
         e.preventDefault();
-        if(states.password === states.confirmpass){
-            alert('Form submitted')
+        const result= validateEmail();
+        if (result === true ){
+
+            if(states.password === states.confirmpass){
+                alert('Form submitted')
+            }
+            else{
+                alert('Password and Confirm Password should be same.')
+            }
         }
-        else{
-            alert('Password and Confirm Password should be same.')
-        }
+
         
 
     }
@@ -56,7 +80,12 @@ return (
                 </div>
                 <div className='detail1'>
                     <span>Email</span>
-                    <input type="text" required={true} />
+                    <input type="text" required={true}onChange={e => {setStates({
+                        ...states,
+                        email:e.target.value
+                    })}} />
+                   {states.err && 
+                   <span style={{color:'red'}}>Invalid Email</span>}
                 </div>
                 <div className='detail1'>
                     <span>Contact Number(Optional)</span>
