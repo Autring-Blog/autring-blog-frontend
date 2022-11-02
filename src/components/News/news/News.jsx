@@ -1,14 +1,31 @@
 import React from 'react';
 import NewsCard from '../card/NewsCard';
+import share from '../../../assets/icons/shareIcon.svg';
 
 import './News.css';
+import { useState } from 'react';
 
 const list = [1, 2, 3, 4, 5];
 
 const News = () => {
+  const [popUp, setPopUp] = useState(false);
+  const handleShare = () => {
+    navigator.clipboard.writeText(window.navigation.currentEntry.url);
+    setPopUp(true);
+    setTimeout(() => {
+      setPopUp(false);
+    }, 1000);
+  };
+
   return (
     <div className='news'>
       <div className='hero-section'>
+        <div className={`pop-up ${popUp ? 'show' : 'hide'}`}> Copied Url </div>
+        <div className='icons'>
+          <div className='icon share-icon' onClick={handleShare}>
+            <img src={share} alt='' />
+          </div>
+        </div>
         <div className='hero-image'>
           {/* <img src={require('../../assets/images/hero-image.png')} alt='img' /> */}
         </div>
@@ -90,7 +107,7 @@ const News = () => {
           <h2>Related Articles</h2>
           <div className='news-card-list'>
             {list.map((_, idx) => (
-              <NewsCard />
+              <NewsCard key={idx} />
             ))}
           </div>
         </div>
