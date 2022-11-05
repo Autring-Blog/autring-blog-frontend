@@ -4,7 +4,7 @@
 }
 
 .hero-image {
-  background-image: url(../../../assets/images/hero-image.png);
+  background-image: url(../../assets/images/hero-image.png);
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -107,7 +107,7 @@
 
 @media (max-width: 480px) {
   .hero-image {
-    background-image: url(../../../assets/images/hero-image.png);
+    background-image: url(../../assets/images/hero-image.png);
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;

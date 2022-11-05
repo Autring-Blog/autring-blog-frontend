@@ -21,7 +21,7 @@ const NewsCard = () => {
         <div className='news-card-btn'>
           <a href=''>
             Read more
-            <span class='material-symbols-outlined'>chevron_right</span>{' '}
+            <span className='material-symbols-outlined'>chevron_right</span>{' '}
           </a>
         </div>
       </div>

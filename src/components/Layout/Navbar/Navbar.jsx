@@ -1,4 +1,3 @@
-import image from "../../Images/autring image.png"
 import "./Navbar.css";
 
 function Navbar() {
