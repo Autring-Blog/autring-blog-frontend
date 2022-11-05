@@ -1,13 +1,13 @@
 import React from "react";
-import Card from "../Card/Card";
+import NewsCard from '../Card/NewsCard'
 import "./Intro.css";
 
 function Intro() {
   return (
     <div className="intro">
-      <Card />
-      <Card />
-      <Card />
+      <NewsCard />
+      <NewsCard />
+      <NewsCard />
     </div>
   );
 }

@@ -1,8 +1,7 @@
 import React from "react";
-import cardImage from "../../Images/cardImage.png";
 import "./Trending.css";
 // import { KeyboardArrowRight, Search } from "@material-ui/icons";
-import Card from "../Card/Card";
+import NewsCard from "../Card/NewsCard";
 
 function News() {
   return (
@@ -13,9 +12,9 @@ function News() {
       </form>
       <h1 className="trending_main_heaing">Trending</h1>
       <div className="trending_container">
-        <Card />
-        <Card />
-        <Card />
+        <NewsCard />
+        <NewsCard />
+        <NewsCard />
       </div>
     </div>
   );
