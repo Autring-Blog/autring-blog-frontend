@@ -12,7 +12,7 @@
 }
 .Signup_logo>img{
     width: 350px;
-    height: 250px;
+    /* height: 250px; */
 }
 .head_up{   
     line-height: 44px;
@@ -55,6 +55,7 @@
 .signup_foot{
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 1rem;
     cursor: pointer;
     margin-bottom: 3rem;
@@ -74,6 +75,19 @@
     align-items: center;
     gap: 1.5rem;
 }
+.custom_button {
+    background: #eae509;
+    box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    border: none;
+    font-size: 18px;
+    padding: 10px 25px;
+    cursor: pointer;
+  }
+  .custom_button:hover {
+    text-decoration: underline;
+  }
+  
 @media screen and (max-width:650px) {
     .Signup_wrapper{
         display: flex;
@@ -84,7 +98,7 @@
     }
     .Signup_logo>img{
         width:108px;
-        height: 101px;
+        /* height: 101px; */
     }
     .Signup_detail{
         display: flex;

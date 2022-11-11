@@ -9,7 +9,7 @@
 }
 .signin_logo>img{
     width: 350px;
-    height: 250px;;
+    /* height: 250px;; */
 }
 .signin_details{
     display: flex;
@@ -65,6 +65,7 @@
 .signin_foot{
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap:1rem;
 }
 .foot_icons{
@@ -74,6 +75,22 @@
     margin-bottom: 3rem;
     cursor: pointer;
 }
+.foot_icons>img{
+    width: max-content;
+}
+.custom_button {
+    background: #eae509;
+    box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    border: none;
+    font-size: 18px;
+    padding: 10px 25px;
+    cursor: pointer;
+  }
+  .custom_button:hover {
+    text-decoration: underline;
+  }
+  
 @media screen and (max-width:650px) {
     .Signin_wrapper{
         width: 100%;
@@ -83,7 +100,7 @@
     }
     .signin_logo>img{
         width: 108px;
-        height: 101px;
+        /* height: 101px; */
     }
 
     
