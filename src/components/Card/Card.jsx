@@ -1,7 +1,7 @@
 import React from "react";
 import "./Card.css";
 import cardImage from "../../Images/cardImage.png";
-// import { KeyboardArrowRight } from "@material-ui/icons";
+import { KeyboardArrowRight } from "@material-ui/icons";
 
 function Card() {
   return (
@@ -17,7 +17,7 @@ function Card() {
           nemo nesciunt soluta sit minus!
         </p>
         <button className="card_button">
-          {/* Read <KeyboardArrowRight />{" "} */}
+          Read <KeyboardArrowRight />
         </button>
       </div>
     </>

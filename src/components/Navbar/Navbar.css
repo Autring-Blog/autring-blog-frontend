@@ -1,13 +1,19 @@
-.left.menu {
+.left.menu item {
     position: absolute;
     left: 0px;
     top: 0px;
-    width: 145px;
-    height: 85px;
     margin-right: 50px;
 }
 
+i.icon.search{
+margin-top: 40px;
+}
 
+img{
+    width: 145px;
+    height: 85px;
+
+}
 .item {
     font-family: 'Quicksand';
     font-style: normal;
@@ -19,11 +25,18 @@
     margin-left: 5px;
 }
 
-item:active{
+item:hover{
     background:olive;
 }
 
 .right.menu{
     position:absolute;
     right: 0px;
+}
+
+@media screen and (max-width: 850px) {
+    .ui.secondary.menu {
+        grid-template-columns: 1fr;
+    }
+
 }

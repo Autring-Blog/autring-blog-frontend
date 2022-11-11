@@ -5,7 +5,7 @@ function Navbar() {
   return (
     <div className="ui secondary menu">
       <div className="left menu">
-        {/* <img src={image} />      */}
+        {<img src={image} />}
       </div>
 
       <a className="item">
@@ -36,8 +36,8 @@ function Navbar() {
         Others
       </a>
       <div className="right menu">
-          <i className="search link icon"></i>
-       
+        <i className="big search link icon"></i>
+
       </div>
     </div>
   )
