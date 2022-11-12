@@ -88,14 +88,6 @@ const Signup = () => {
         }
     };
 
-    // const formHandler = async (e) => {
-    //     e.preventDefault();
-    //     console.log(email, password);
-    //     login(email, password);
-    //     // console.log(data);
-    //     setEmail("");
-    //     setPassword("");
-    // };
     return (
         <div className='Signup_wrapper'>
             <div className="Signup_logo">
