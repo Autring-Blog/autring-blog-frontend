@@ -80,8 +80,6 @@ const Signin = () => {
             <a href="https://infinite-cove-18126.herokuapp.com/auth/google" >
               <img src="https://img.icons8.com/color/48/000000/google-logo.png" alt='icons' />
             </a>
-            <img src="https://img.icons8.com/fluency/48/000000/facebook-new.png" alt='icons' />
-            <img src="https://img.icons8.com/fluency/48/000000/instagram-new.png" alt='icons' />
           </div>
         </div>
       </div>
