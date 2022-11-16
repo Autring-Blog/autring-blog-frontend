@@ -19,9 +19,9 @@ const NewsCard = () => {
           aircraft as Tejas Mark-2 project.
         </p>
         <div className='news-card-btn'>
-          <a href=''>
+          <a>
             Read more
-            <span class='material-symbols-outlined'>chevron_right</span>{' '}
+            <span className='material-symbols-outlined'>chevron_right</span>
           </a>
         </div>
       </div>

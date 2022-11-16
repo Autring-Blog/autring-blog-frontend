@@ -1,0 +1,29 @@
+.left.menu {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 145px;
+    height: 85px;
+    margin-right: 50px;
+}
+
+
+.item {
+    font-family: 'Quicksand';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 25px;
+    /* identical to box height */
+    color: black;
+    margin-left: 5px;
+}
+
+item:active{
+    background:olive;
+}
+
+.right.menu{
+    position:absolute;
+    right: 0px;
+}

@@ -1,13 +1,16 @@
 import React from 'react';
-import NewsCard from '../card/NewsCard';
-import share from '../../../assets/icons/shareIcon.svg';
 
-import './News.css';
+import NewsCard from '../Home/Card/NewsCard';
+import Footer from '../Layout/Footer/Footer';
+import Navbar from '../Layout/Navbar/Navbar';
+import share from '../../assets/icons/shareIcon.svg';
+
+import './NewsDetail.css';
 import { useState } from 'react';
 
 const list = [1, 2, 3, 4, 5];
 
-const News = () => {
+const NewsDetail = () => {
   const [popUp, setPopUp] = useState(false);
   const handleShare = () => {
     navigator.clipboard.writeText(window.navigation.currentEntry.url);
@@ -19,6 +22,7 @@ const News = () => {
 
   return (
     <div className='news'>
+      <Navbar />
       <div className='hero-section'>
         <div className={`pop-up ${popUp ? 'show' : 'hide'}`}> Copied Url </div>
         <div className='icons'>
@@ -27,7 +31,7 @@ const News = () => {
           </div>
         </div>
         <div className='hero-image'>
-          {/* <img src={require('../../assets/images/hero-image.png')} alt='img' /> */}
+          <img src={require('../../assets/images/hero-image.png')} alt='img' />
         </div>
         <div className='hero-content'>
           <h2>
@@ -72,10 +76,7 @@ const News = () => {
           </p>
         </div>
         <div className='section-image'>
-          <img
-            src={require('../../../assets/images/news-section.png')}
-            alt=''
-          />
+          <img src={require('../../assets/images/news-section.png')} alt='' />
           <span>
             Vikrant was launched in 2013 before extensive trials began
           </span>
@@ -112,8 +113,9 @@ const News = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };
 
-export default News;
+export default NewsDetail;

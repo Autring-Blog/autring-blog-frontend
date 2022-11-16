@@ -13,13 +13,13 @@
   line-height: 3.125rem;
   margin-bottom: 2.5rem;
 }
-input {
+.search-input > input {
   width: 100%;
   border: none;
   font: inherit;
   margin-left: 1rem;
 }
-input:focus {
+.search-input > input:focus {
   outline: none;
 }
 

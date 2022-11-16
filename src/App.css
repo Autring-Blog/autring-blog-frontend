@@ -37,6 +37,10 @@
     transform: rotate(360deg);
   }
 }
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent; /* make scrollbar transparent */
+}
 
 .custom_button {
   background: #eae509;
