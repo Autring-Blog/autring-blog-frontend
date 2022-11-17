@@ -9,8 +9,9 @@ const BlogCard = ({ data, deletePost, editPost }) => {
       <div className='image-wrapper'>
         <img
           src={
-            photo ||
-            'https://img.freepik.com/free-vector/illustration-gallery-icon_53876-27002.jpg?size=626&ext=jpg'
+            photo
+              ? photo
+              : require('https://img.freepik.com/free-vector/illustration-gallery-icon_53876-27002.jpg?size=626&ext=jpg')
           }
           alt={category}
         />
