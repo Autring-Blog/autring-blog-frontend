@@ -32,13 +32,12 @@
 }
 
 .news_cardHeading {
-  width: 436px;
-height: 62px;
+  
   font-family: 'Quicksand';
   font-style: normal;
   font-weight: 600;
-  font-size: 25px;
-  line-height: 31px;
+  font-size: 17px;
+ 
 
   color: #000000;
 }
