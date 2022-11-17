@@ -45,33 +45,35 @@ h2 {
     line-height: 31px;
 
     color: #FFFFFF;
-    
+
 }
 
-h3 {
+h3.footerheader {
     width: 100%;
     text-align: center;
     font-size: 1.4em;
     white-space: nowrap;
     font-family: 'Quicksand';
-font-style: normal;
-font-weight: 600;
-font-size: 23px;
-line-height: 29px;
-/* identical to box height */
+    font-style: normal;
+    font-weight: 600;
+    font-size: 23px;
+    line-height: 29px;
+    /* identical to box height */
 
-text-decoration-line: underline;
+    text-decoration-line: underline;
 
-color: #FFFFFF;
+    color: #FFFFFF;
 }
 
 ul {
     list-style: none;
     display: flex;
+    justify-content: center;
     flex-direction: column;
     padding: 0;
     margin: 0;
-
+    flex-wrap: wrap;
+    align-content: center
 }
 
 li:not(:first-child) {
@@ -87,7 +89,7 @@ ul li a:hover {
     color: #2a8ded;
 }
 
-.about{
+.about {
     text-align: left;
     color: #FFFFFF;
 }
@@ -135,11 +137,11 @@ div.social {
     color: #27bcda;
 }
 
-.contactUs{
-    color: #FFFFFF ;
+.contactUs {
+    color: #FFFFFF;
 }
 
-.icons{
+.icons {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
