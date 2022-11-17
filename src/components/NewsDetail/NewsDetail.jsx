@@ -1,13 +1,16 @@
 import React from 'react';
-import NewsCard from '../card/NewsCard';
+import NewsCard from '../Home/Card/NewsCard';
+import Footer from '../Layout/Footer/Footer';
+import NavbarHome from '../Layout/Navbar/NavbarHome';
 
-import './News.css';
+import './NewsDetail.css';
 
 const list = [1, 2, 3, 4, 5];
 
-const News = () => {
+const NewsDetail = () => {
   return (
     <div className='news'>
+      <NavbarHome/>
       <div className='hero-section'>
         <div className='hero-image'>
           {/* <img src={require('../../assets/images/hero-image.png')} alt='img' /> */}
@@ -56,7 +59,7 @@ const News = () => {
         </div>
         <div className='section-image'>
           <img
-            src={require('../../../assets/images/news-section.png')}
+            src={require('../../assets/images/news-section.png')}
             alt=''
           />
           <span>
@@ -95,8 +98,10 @@ const News = () => {
           </div>
         </div>
       </div>
+      <Footer/>
     </div>
   );
 };
 
-export default News;
+
+export default NewsDetail;

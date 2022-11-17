@@ -1,16 +1,16 @@
-import Navbar from "../Navbar/Navbar";
+import NavbarHome from "../Layout/Navbar/NavbarHome";
 import "./HomePage.css"
-import Footer from "../Footer/Footer";
-import Intro from "../Intro/Intro";
-import Trending from "../Trending/Trending";
-import News from "../News/News";
-import NewsLetter from "../NewsLetter/NewsLetter";
-import Carousel from "../Carousel/Carousel";
+import Footer from "../Layout/Footer/Footer";
+import Intro from "./Intro/Intro";
+import Trending from "./Trending/Trending";
+import News from "../Home/News/News";
+import NewsLetter from "./NewsLetter/NewsLetter";
+import Carousel from "./Carousel/Carousel";
 
 const HomePage = () => {
     return (
         <>
-            <Navbar />
+            <NavbarHome />
             <hr />
             <Carousel />
             <Intro />
