@@ -1,7 +1,7 @@
 footer {
     background-color: #2B7A0B;
     ;
-    color: #a7a7a7;
+    color: #FFFFFF;
     font-size: 16px;
 }
 
@@ -18,8 +18,9 @@ footer * {
 
 .row.primary {
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr 2fr;
+    grid-template-columns: 0.5fr 1fr 1fr 2fr;
     align-items: stretch;
+
 }
 
 .column {
@@ -31,9 +32,9 @@ footer * {
     min-height: 15em;
 }
 
-p{
-    
-color: #FFFFFF;
+p {
+    /*     
+color: #FFFFFF; */
 }
 
 h2 {
@@ -42,15 +43,26 @@ h2 {
     font-weight: 700;
     font-size: 25px;
     line-height: 31px;
+
     color: #FFFFFF;
+    
 }
 
 h3 {
     width: 100%;
-    text-align: left;
-    color: white;
+    text-align: center;
     font-size: 1.4em;
     white-space: nowrap;
+    font-family: 'Quicksand';
+font-style: normal;
+font-weight: 600;
+font-size: 23px;
+line-height: 29px;
+/* identical to box height */
+
+text-decoration-line: underline;
+
+color: #FFFFFF;
 }
 
 ul {
@@ -59,7 +71,7 @@ ul {
     flex-direction: column;
     padding: 0;
     margin: 0;
-    
+
 }
 
 li:not(:first-child) {
@@ -75,12 +87,9 @@ ul li a:hover {
     color: #2a8ded;
 }
 
-.about p {
-    text-align: justify;
-    line-height: 2;
-    margin: 0;
-    
-color: #FFFFFF;
+.about{
+    text-align: left;
+    color: #FFFFFF;
 }
 
 input,
@@ -124,6 +133,18 @@ div.social {
 
 .footer-menu a:hover {
     color: #27bcda;
+}
+
+.contactUs{
+    color: #FFFFFF ;
+}
+
+.icons{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: space-between;
+    justify-content: center;
 }
 
 @media screen and (max-width: 850px) {

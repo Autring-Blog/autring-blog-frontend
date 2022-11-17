@@ -17,7 +17,7 @@ function Card() {
           nemo nesciunt soluta sit minus!
         </p>
         <button className="card_button">
-          Read <KeyboardArrowRight />
+          Read <KeyboardArrowRight />{" "}
         </button>
       </div>
     </>
