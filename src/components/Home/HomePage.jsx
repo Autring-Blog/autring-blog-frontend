@@ -1,4 +1,4 @@
-import Navbar from "../Layout/Navbar/Navbar";
+import NavbarHome from "../Layout/Navbar/NavbarHome";
 import "./HomePage.css"
 import Footer from "../Layout/Footer/Footer";
 import Intro from "./Intro/Intro";
@@ -10,7 +10,7 @@ import Carousel from "./Carousel/Carousel";
 const HomePage = () => {
     return (
         <>
-            <Navbar />
+            <NavbarHome />
             <hr />
             <Carousel />
             <Intro />

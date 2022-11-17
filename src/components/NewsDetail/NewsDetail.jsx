@@ -1,7 +1,7 @@
 import React from 'react';
 import NewsCard from '../Home/Card/NewsCard';
 import Footer from '../Layout/Footer/Footer';
-import Navbar from '../Layout/Navbar/Navbar';
+import NavbarHome from '../Layout/Navbar/NavbarHome';
 
 import './NewsDetail.css';
 
@@ -10,7 +10,7 @@ const list = [1, 2, 3, 4, 5];
 const NewsDetail = () => {
   return (
     <div className='news'>
-      <Navbar/>
+      <NavbarHome/>
       <div className='hero-section'>
         <div className='hero-image'>
           {/* <img src={require('../../assets/images/hero-image.png')} alt='img' /> */}
