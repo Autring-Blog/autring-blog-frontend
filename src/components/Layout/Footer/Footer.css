@@ -1,3 +1,4 @@
+
 .footer {
   position: absolute;
   top: 3350px;
@@ -108,3 +109,162 @@
 
   color: #ffffff;
 }
+=======
+footer {
+    background-color: #2B7A0B;
+    ;
+    color: #FFFFFF;
+    font-size: 16px;
+}
+
+footer * {
+
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+}
+
+.row {
+    padding: 1em 1em;
+}
+
+.row.primary {
+    display: grid;
+    grid-template-columns: 0.5fr 1fr 1fr 2fr;
+    align-items: stretch;
+
+}
+
+.column {
+    margin-top: 90px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 0 2em;
+    min-height: 15em;
+}
+
+p {
+    /*     
+color: #FFFFFF; */
+}
+
+h2 {
+    font-family: 'Quicksand';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 25px;
+    line-height: 31px;
+
+    color: #FFFFFF;
+
+}
+
+h3.footerheader {
+    width: 100%;
+    text-align: center;
+    font-size: 1.4em;
+    white-space: nowrap;
+    font-family: 'Quicksand';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 23px;
+    line-height: 29px;
+    /* identical to box height */
+
+    text-decoration-line: underline;
+
+    color: #FFFFFF;
+}
+
+ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
+    flex-wrap: wrap;
+    align-content: center
+}
+
+li:not(:first-child) {
+    margin-top: 0.8em;
+}
+
+ul li a {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+ul li a:hover {
+    color: #2a8ded;
+}
+
+.about {
+    text-align: left;
+    color: #FFFFFF;
+}
+
+input,
+button {
+    font-size: 1em;
+    padding: 1em;
+    width: 100%;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+button {
+    background-color: #c7940a;
+    color: #ffffff;
+}
+
+div.social {
+    display: flex;
+    justify-content: space-around;
+    font-size: 2.4em;
+    flex-direction: row;
+    margin-top: 0.5em;
+}
+
+.social i {
+    color: #bac6d9;
+}
+
+
+.footer-menu {
+    float: left;
+    margin-top: 10px;
+}
+
+.footer-menu a {
+    color: #cfd2d6;
+    padding: 6px;
+
+    text-decoration: none;
+}
+
+.footer-menu a:hover {
+    color: #27bcda;
+}
+
+.contactUs {
+    color: #FFFFFF;
+}
+
+.icons {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: space-between;
+    justify-content: center;
+}
+
+@media screen and (max-width: 850px) {
+    .row.primary {
+        grid-template-columns: 1fr;
+    }
+
+}
+

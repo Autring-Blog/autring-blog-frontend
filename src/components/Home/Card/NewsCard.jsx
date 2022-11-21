@@ -9,8 +9,8 @@ const NewsCard = () => {
         <img src={require('../../../assets/images/news-card.png')} alt='' />
       </div>
       <div className='news-card-content'>
-        <h3>
-          Tejas Mark-2 megaproject approved by Cabinet Committee on Security
+        <h3 className='news_cardHeading'>
+          Tejas Mark-2 megaproject  approved by <br />Cabinet Committee on Security
         </h3>
 
         <p>
