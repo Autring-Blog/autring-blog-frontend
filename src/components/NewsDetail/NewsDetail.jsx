@@ -3,7 +3,6 @@ import React from 'react';
 import NewsCard from '../Home/Card/NewsCard';
 import Footer from '../Layout/Footer/Footer';
 
-import Navbar from '../Layout/Navbar/Navbar';
 import share from '../../assets/icons/shareIcon.svg';
 import NavbarHome from '../Layout/Navbar/NavbarHome';
 
