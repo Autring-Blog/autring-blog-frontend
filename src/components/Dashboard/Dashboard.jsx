@@ -133,6 +133,9 @@ const Dashboard = () => {
     console.log(editPost);
     console.log(editPost[0]);
     reset();
+    const formData = new FormData();
+    formData.append('photo', photo);
+    console.log(formData);
 
     setPhoto(photo);
     setInPhotoTitle(inPhotoTitle);

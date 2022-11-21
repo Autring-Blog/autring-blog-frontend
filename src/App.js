@@ -1,6 +1,6 @@
 // import HomePage from "./components/Home/HomePage";
 import HomePage from './components/Home/HomePage';
-import Favourite from './components/Favourite/Favourite';
+import Favourite from './components/favourite/Favourite';
 import Signin from './components/Auth/Signin/Signin';
 import Signup from './components/Auth/Signup/Signup';
 import { Routes, Route } from 'react-router-dom';
