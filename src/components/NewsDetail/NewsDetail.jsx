@@ -6,7 +6,6 @@ import Footer from '../Layout/Footer/Footer';
 import share from '../../assets/icons/shareIcon.svg';
 import NavbarHome from '../Layout/Navbar/NavbarHome';
 
-
 import './NewsDetail.css';
 import { useState } from 'react';
 
@@ -24,7 +23,7 @@ const NewsDetail = () => {
 
   return (
     <div className='news'>
-      <NavbarHome/>
+      <NavbarHome />
 
       <div className='hero-section'>
         <div className={`pop-up ${popUp ? 'show' : 'hide'}`}> Copied Url </div>
