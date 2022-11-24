@@ -1,7 +1,7 @@
 import './Navbar.css';
-import NavbarImage from './autring-image.png';
+import NavbarImage from '../../../assets/images/autring-image.png';
 
-function NavbarHome() {
+function Navbar() {
   return (
     <div className='navbar'>
       <div className='brand-logo'>
@@ -26,4 +26,4 @@ function NavbarHome() {
   );
 }
 
-export default NavbarHome;
+export default Navbar;
