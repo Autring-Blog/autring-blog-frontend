@@ -9,7 +9,7 @@ import Navbar from '../Layout/Navbar/Navbar';
 import './NewsDetail.css';
 import { useState } from 'react';
 
-const list = [1, 2, 3, 4, 5];
+const list = [1, 2,3,4,5];
 
 const NewsDetail = () => {
   const [popUp, setPopUp] = useState(false);
