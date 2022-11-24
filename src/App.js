@@ -1,6 +1,5 @@
-
-import HomePage from "./components/Home/HomePage";
-import Favourite from'./components/Favourite/Favourite';
+import HomePage from './components/Home/HomePage';
+import Favourite from './components/Favourite/Favourite';
 
 import Signin from './components/Auth/Signin/Signin';
 import Signup from './components/Auth/Signup/Signup';
