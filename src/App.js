@@ -6,6 +6,7 @@ import Signup from './components/Auth/Signup/Signup';
 import { Routes, Route } from 'react-router-dom';
 import NewsDetail from './components/NewsDetail/NewsDetail';
 import Dashboard from './components/Dashboard/Dashboard';
+import NewsCategory from './components/NewsCategory/NewsCategory';
 function App() {
   return (
     <div className='App'>
@@ -16,6 +17,7 @@ function App() {
         <Route exact path='/favourite' element={<Favourite />} />
         <Route exact path='/dashboard' element={<Dashboard />} />
         <Route exact path='/blog/:id' element={<NewsDetail />} />
+        <Route exact path='/blogs/:category' element={<NewsCategory />} />
       </Routes>
     </div>
   );

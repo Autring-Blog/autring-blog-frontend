@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import './NewsCard.css';
 
@@ -19,10 +20,10 @@ const NewsCard = () => {
           aircraft as Tejas Mark-2 project.
         </p>
         <div className='news-card-btn'>
-          <a>
+          <Link to={`/blog/${1}`}>
             Read more
             <span className='material-symbols-outlined'>chevron_right</span>
-          </a>
+          </Link>
         </div>
       </div>
     </div>
