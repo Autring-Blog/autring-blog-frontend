@@ -13,6 +13,8 @@ const Footer = () => {
             <p className='about'>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae,
               voluptatem corporis error non,
+              voluptatem corporis error non,
+              voluptatem corporis error non,
             </p>
           </div>
           <div className='footer-content'>
@@ -27,6 +29,12 @@ const Footer = () => {
               <li>
                 <a href='#terms-of-services'>Lorem</a>
               </li>
+              <li>
+                <a href='#terms-of-services'>Lorem</a>
+              </li>
+              <li>
+                <a href='#terms-of-services'>Lorem</a>
+              </li>
             </ul>
           </div>
           <div className='footer-content'>
@@ -36,8 +44,6 @@ const Footer = () => {
               explicabo sapiente tempore consequatur quis totam ad, vero, alias
               perferendis, illo aliquid assumenda nobis. Eum laboriosam qui
               natus tempora a? Saepe fugit quaerat sit quod iure perferendis
-              nostrum rem aut iusto dignissimos harum, sint tenetur totam cum
-              blanditiis?
             </p>
             <div className='footer-icons'>
               <i className='large whatsapp icon'></i>

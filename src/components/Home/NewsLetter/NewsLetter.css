@@ -51,9 +51,9 @@
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
     margin-top: 35px;
+    cursor: pointer;
   }
   .news_letter_heading {
-    width: 378px;
     height: 44px;
     font-family: "Quicksand";
     font-style: normal;
@@ -62,3 +62,7 @@
     line-height: 44px;
     color: #000000;
   }
+
+  .input > input{
+    padding: 10px;
+  } 

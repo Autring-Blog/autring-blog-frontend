@@ -4,6 +4,8 @@ import BlogCard from './card/BlogCard';
 
 import './Dashboard.css';
 import Loader from '../Loader/Loader';
+const url ='http://localhost:3007'
+
 const Dashboard = () => {
   const [loading, setLoading] = useState(false);
   const [blogList, setBlogList] = useState([]);
@@ -20,7 +22,7 @@ const Dashboard = () => {
     setLoading(true);
     try {
       const res = await axios({
-        url: 'https://infinite-cove-18126.herokuapp.com/api/v1/getallblog',
+        url: `${url}/api/v1/getallblog`,
         headers: {
           Authorization:
             'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNjFlNDYxMzMxMzhhY2ZjNzQwNDM2MSIsImlhdCI6MTY2ODE4MTMxOCwiZXhwIjoxNjcwNzczMzE4fQ.KgVQNvodVCgAPU99mnektiz5KGAgrsReBDBFiT5SVgM',
@@ -61,7 +63,7 @@ const Dashboard = () => {
 
     try {
       const postBlog = await axios.post(
-        'https://infinite-cove-18126.herokuapp.com/api/v1/postablog',
+        `${url}/api/v1/postablog`,
         {
           photo,
           inPhotoTitle,
@@ -97,7 +99,7 @@ const Dashboard = () => {
     if (confirm) {
       try {
         await axios.delete(
-          `https://infinite-cove-18126.herokuapp.com/api/v1/deleteblog/${id}`,
+          `${url}/api/v1/deleteblog/${id}`,
           {
             headers: {
               Authorization:
@@ -152,7 +154,7 @@ const Dashboard = () => {
 
     try {
       const updateBlog = await axios.patch(
-        `https://infinite-cove-18126.herokuapp.com/api/v1/updateblog/${id}`,
+        `${url}/api/v1/updateblog/${id}`,
         {
           category,
           photo,

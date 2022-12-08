@@ -1,33 +1,18 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import "./Signup.css";
 import logo from "../../../assets/images/logo.png";
 import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
-import validator from 'validator';
-import axios from 'axios';
-
+import { useDispatch, useSelector } from 'react-redux';
+import { clearErrors, register } from '../../../redux/actions/userAction'
+import { REGISTER_RESET } from '../../../redux/constants/userConstant';
+import { useAlert } from 'react-alert';
 const Signup = () => {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const alert = useAlert();
     const [states, setStates] = useState({ user: '', email: '', contact: '', password: '', confirmpass: '', error: false, err: false })
-    const validateEmail = () => {
-        var email = states.email
 
-        if (validator.isEmail(email)) {
-            setStates({
-                ...states,
-                err: false
-            })
-            return true;
-
-        } else {
-            setStates({
-                ...states,
-                err: true
-            })
-            return false;
-        }
-    };
-
+    const { error, isRegistered } = useSelector((state) => state.user)
     const handlesignin = () => {
         navigate('/signin')
     }
@@ -37,8 +22,6 @@ const Signup = () => {
             setStates({
                 ...states,
                 error: true
-
-
             })
         }
         else {
@@ -46,47 +29,33 @@ const Signup = () => {
                 ...states,
                 error: false,
                 password: event.target.value
-
             })
         }
     }
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(states)
-        const result = validateEmail();
-        register(states.user,states.email,states.contact,states.password,states.confirmpass)
-        if (result === true) {
-
-            if (states.password === states.confirmpass) {
-                alert('Form submitted')
-            }
-            else {
-                alert('Password and Confirm Password should be same.')
-            }
+        const userData = {
+            name: states.user,
+            email: states.email,
+            password: states.password,
+            passwordConfirm: states.confirmpass
         }
+        dispatch(register(userData))
     }
 
-    const register = async (user ,email, password,  confirmpass ) => {
-        try {
-            const res = await axios({
-                method: "POST",
-                url: "https://infinite-cove-18126.herokuapp.com/api/v1/signup",
-                data: {
-                    name:user,
-                    email,
-                    password,
-                    passwordConfirm:confirmpass
-                },
-                xhrFields: {
-                    withCredentials: true,
-                },
-            });
-            console.log(res);
-            //console.log(res.data.data.user.email);
-        } catch (err) {
-            alert("error", "Invalid Credential");
+
+    useEffect(() => {
+        if (isRegistered) {
+            alert.success("Registered Succesfully Login to Continue");
+            dispatch({ type: REGISTER_RESET })
+            navigate('/signin');
         }
-    };
+        if (error) {
+            alert.error(error);
+            dispatch(clearErrors());
+        }
+    }, [dispatch, navigate, isRegistered, error, alert])
+
 
     return (
         <div className='Signup_wrapper'>
@@ -115,15 +84,6 @@ const Signup = () => {
                         }} />
                         {states.err &&
                             <span style={{ color: 'red' }}>Invalid Email</span>}
-                    </div>
-                    <div className='detail1'>
-                        <span>Contact Number(Optional)</span>
-                        <input type="tel"  onChange={e => {
-                            setStates({
-                                ...states,
-                                contact: e.target.value
-                            })
-                        }} />
                     </div>
                     <div className='detail1'>
                         <span>Password(Minimum 8 characters)</span>

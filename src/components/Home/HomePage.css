@@ -16,3 +16,6 @@
    top: 10px;
 }
 
+.news-card-list::-webkit-scrollbar {
+  width: 10px;
+}

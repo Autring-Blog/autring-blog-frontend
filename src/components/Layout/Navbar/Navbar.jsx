@@ -45,7 +45,7 @@ function Navbar() {
       <div className='item-list'>
         <Link to={'/'} className='item'>Home</Link>
         {navbarItems && navbarItems.map((navItem) => (
-          <Link to={`/blogs/${navItem.value}`} className='item'>{navItem.name}</Link>
+          <Link to={`/blogs/${navItem.value}`} className='item' key={navItem.value}>{navItem.name}</Link>
         ))}
         {/* <a className='item'>Home</a>
         <a className='item'>International</a>

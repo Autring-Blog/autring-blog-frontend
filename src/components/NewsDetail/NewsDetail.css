@@ -4,7 +4,6 @@
 }
 
 .hero-image {
-  background-image: url(../../assets/images/hero-image.png);
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -54,11 +53,10 @@
   width: 100%;
   margin-top: 15rem;
   background-color: rgba(255, 255, 255, 0.6);
-  /* position: absolute; */
 }
 
 .hero-content h2 {
-  width: 563px;
+  width: 700px;
   margin: 0 auto;
   padding: 2rem 0;
   font-size: 2.5rem;
