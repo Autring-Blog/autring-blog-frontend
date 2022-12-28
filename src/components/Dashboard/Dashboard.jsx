@@ -19,13 +19,15 @@ const Dashboard = () => {
   const getAllBlogs = async () => {
     setLoading(true);
     try {
-      const res = await axios({
-        url: 'https://infinite-cove-18126.herokuapp.com/api/v1/getallblog',
-        headers: {
-          Authorization:
-            'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNjFlNDYxMzMxMzhhY2ZjNzQwNDM2MSIsImlhdCI6MTY2ODE4MTMxOCwiZXhwIjoxNjcwNzczMzE4fQ.KgVQNvodVCgAPU99mnektiz5KGAgrsReBDBFiT5SVgM',
-        },
-      });
+      const res = await axios.get(
+        'https://www.theautring.com/api/v1/getallblog',
+        {
+          xhrFields: {
+            withCredentials: true,
+          },
+          withCredentials: true,
+        }
+      );
 
       setBlogList(res.data.data.blog);
       console.log(res.data.data.blog);
@@ -61,7 +63,7 @@ const Dashboard = () => {
 
     try {
       const postBlog = await axios.post(
-        'https://infinite-cove-18126.herokuapp.com/api/v1/postablog',
+        'https://www.theautring.com/api/v1/postablog',
         {
           photo,
           inPhotoTitle,
@@ -72,13 +74,12 @@ const Dashboard = () => {
         },
         {
           headers: {
-            Authorization:
-              'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNjFlNDYxMzMxMzhhY2ZjNzQwNDM2MSIsImlhdCI6MTY2ODE4MTMxOCwiZXhwIjoxNjcwNzczMzE4fQ.KgVQNvodVCgAPU99mnektiz5KGAgrsReBDBFiT5SVgM',
             'Content-Type': 'multipart/form-data',
           },
           xhrFields: {
             withCredentials: true,
           },
+          withCredentials: true,
         }
       );
 
@@ -88,7 +89,7 @@ const Dashboard = () => {
 
       console.log(res.data);
     } catch (err) {
-      console.error('error post the blog', err.message);
+      console.error('error post the blog', err);
     }
   };
 
@@ -97,16 +98,12 @@ const Dashboard = () => {
     if (confirm) {
       try {
         await axios.delete(
-          `https://infinite-cove-18126.herokuapp.com/api/v1/deleteblog/${id}`,
+          `https://www.theautring.com/api/v1/deleteblog/${id}`,
           {
-            headers: {
-              Authorization:
-                'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNjFlNDYxMzMxMzhhY2ZjNzQwNDM2MSIsImlhdCI6MTY2ODE4MTMxOCwiZXhwIjoxNjcwNzczMzE4fQ.KgVQNvodVCgAPU99mnektiz5KGAgrsReBDBFiT5SVgM',
-              'Content-Type': 'multipart/form-data',
-            },
             xhrFields: {
               withCredentials: true,
             },
+            withCredentials: true,
           }
         );
         getAllBlogs();
@@ -152,7 +149,7 @@ const Dashboard = () => {
 
     try {
       const updateBlog = await axios.patch(
-        `https://infinite-cove-18126.herokuapp.com/api/v1/updateblog/${id}`,
+        `https://www.theautring.com/api/v1/updateblog/${id}`,
         {
           category,
           photo,
@@ -162,13 +159,10 @@ const Dashboard = () => {
           paragraphDescription,
         },
         {
-          headers: {
-            Authorization:
-              'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNjFlNDYxMzMxMzhhY2ZjNzQwNDM2MSIsImlhdCI6MTY2ODE4MTMxOCwiZXhwIjoxNjcwNzczMzE4fQ.KgVQNvodVCgAPU99mnektiz5KGAgrsReBDBFiT5SVgM',
-          },
           xhrFields: {
             withCredentials: true,
           },
+          withCredentials: true,
         }
       );
       const res = await updateBlog;
