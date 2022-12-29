@@ -152,7 +152,6 @@ const Dashboard = () => {
         `https://www.theautring.com/api/v1/updateblog/${id}`,
         {
           category,
-          photo,
           inPhotoTitle,
           mainHeading,
           shortDescription,
@@ -165,11 +164,26 @@ const Dashboard = () => {
           withCredentials: true,
         }
       );
+      const updatePhoto = await axios.patch(
+        `https://www.theautring.com/api/v1/updateblogphoto/${id}`,
+        { photo },
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+          xhrFields: {
+            withCredentials: true,
+          },
+          withCredentials: true,
+        }
+      );
       const res = await updateBlog;
+      const changePhoto = await updatePhoto;
       getAllBlogs();
       reset();
       setIsEdit(false);
       console.log(res);
+      console.log(changePhoto);
     } catch (error) {
       console.error('Something went wrong', error);
     }
