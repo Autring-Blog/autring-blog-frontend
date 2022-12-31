@@ -5,16 +5,15 @@ export const login = (email, password) => async (dispatch) => {
     try {
         dispatch({ type: LOGIN_REQUEST });
 
-        const config = { headers: { "Content-Type": "application/json" }, withCredentials: true };
 
         const { data } = await axios.post(
             `${URL}/login`,
             { email, password },
             {
-                withCredentials: true,
                 xhrFields: {
                     withCredentials: true,
-                }
+                },
+                withCredentials: true,
             }
         );
         console.log(data);
