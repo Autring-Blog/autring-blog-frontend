@@ -1,6 +1,6 @@
 import axios from "axios";
 import { CLEAR_ERRORS, LOGIN_FAIL, LOGIN_REQUEST, LOGIN_SUCCESS, REGISTER_FAIL, REGISTER_REQUEST, REGISTER_SUCCESS } from "../constants/userConstant";
-const URL = 'http://localhost:3007'
+const URL = 'https://www.theautring.com/api/v1'
 export const login = (email, password) => async (dispatch) => {
     try {
         dispatch({ type: LOGIN_REQUEST });
@@ -8,9 +8,14 @@ export const login = (email, password) => async (dispatch) => {
         const config = { headers: { "Content-Type": "application/json" }, withCredentials: true };
 
         const { data } = await axios.post(
-            `${URL}/api/v1/login`,
+            `${URL}/login`,
             { email, password },
-            config
+            {
+                withCredentials: true,
+                xhrFields: {
+                    withCredentials: true,
+                }
+            }
         );
         console.log(data);
 
@@ -27,7 +32,7 @@ export const register = (userData) => async (dispatch) => {
     try {
         dispatch({ type: REGISTER_REQUEST });
         console.log(userData)
-        const { data } = await axios.post(`${URL}/api/v1/signup`,
+        const { data } = await axios.post(`${URL}/signup`,
             userData
         );
         dispatch({ type: REGISTER_SUCCESS, payload: data.user });
