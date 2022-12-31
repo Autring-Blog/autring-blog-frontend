@@ -12,11 +12,13 @@ const HomePage = () => {
     <>
       <Navbar />
       <hr />
-      <Carousel />
-      <Intro />
-      <Trending />
-      <News />
-      <NewsLetter />
+      <div className='home-container'>
+        <Carousel />
+        <Intro />
+        <Trending />
+        <News />
+        <NewsLetter />
+      </div>
       <Footer />
     </>
   );

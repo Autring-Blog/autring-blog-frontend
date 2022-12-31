@@ -10,6 +10,7 @@ function News() {
         <NewsCard />
         <NewsCard />
         <NewsCard />
+        <NewsCard />
       </div>
     </div>
   );

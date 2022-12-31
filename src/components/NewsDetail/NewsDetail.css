@@ -96,16 +96,16 @@
   margin-right: 0.75rem /* 12px */;
   overflow-x: scroll;
   overflow-y: hidden;
-  gap: 1rem;
+  gap: 2rem;
 }
 
 .articles {
   margin-top: 1rem;
 }
-
+/* 
 .news-card-list::-webkit-scrollbar {
   width: 10px;
-}
+} */
 
 /* media query */
 

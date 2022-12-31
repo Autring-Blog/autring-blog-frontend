@@ -21,18 +21,19 @@ const Signin = () => {
 
   const login = async (email, password) => {
     try {
-      const res = await axios({
-        method: 'POST',
-        url: 'https://www.theautring.com/api/v1/login',
-        data: {
+      const res = await axios.post(
+        'https://www.theautring.com/api/v1/login',
+        {
           email,
           password,
         },
-        xhrFields: {
+        {
+          xhrFields: {
+            withCredentials: true,
+          },
           withCredentials: true,
-        },
-        withCredentials: true,
-      });
+        }
+      );
       console.log(res);
       //console.log(res.data.data.user.email);
     } catch (err) {
