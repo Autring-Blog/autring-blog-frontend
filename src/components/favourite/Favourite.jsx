@@ -101,7 +101,7 @@ const Favourite = () => {
         Done
       </div>
 
-      <a href='/#' className='skip-btn'>
+      <a href='/' className='skip-btn'>
         Skip For Now
       </a>
     </div>

@@ -4,19 +4,22 @@ import './Carousel.css';
 const items = [
   {
     heading: 'Slide 1',
-    description: 'lorem ipsu delsk',
+    description:
+      'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Adipisci qui similique odio minima, illum accusamus blanditiis architecto nihil praesentium laboriosam.',
     imageUrl:
       'https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg',
   },
   {
     heading: 'Slide 2',
-    description: 'lorem ipsu delsk',
+    description:
+      'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deserunt, magnam.',
     imageUrl:
       'https://cdn.pixabay.com/photo/2014/02/27/16/10/flowers-276014__340.jpg',
   },
   {
     heading: 'Slide 3',
-    description: 'lorem ipsu delsk',
+    description:
+      'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deserunt, magnam. adipisicing elit. Adipisci qui similique odio minima, illum accusamus blanditiis architecto nihil praesentium laboriosam.',
     imageUrl:
       'https://image.shutterstock.com/image-photo/mountains-under-mist-morning-amazing-260nw-1725825019.jpg',
   },
@@ -53,7 +56,7 @@ const Banner = (props) => {
       <div className='carousel__container--left'>
         <h1 className=''>{props.item.heading}</h1>
         <p>{props.item.description}</p>
-        <button className='carousel__container--left--btn'>read more</button>
+        <button className='carousel__container--left--btn'>Read more</button>
       </div>
       <div className='carousel__container--right'>
         <img

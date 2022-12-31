@@ -80,7 +80,7 @@ const Signin = () => {
           <span onClick={handleSignup}>Sign Up</span>
           <span>Or Continue With</span>
           <div className='foot_icons'>
-            <a href='https://infinite-cove-18126.herokuapp.com/auth/google'>
+            <a href='https://www.theautring.com/auth/google'>
               <img
                 src='https://img.icons8.com/color/48/000000/google-logo.png'
                 alt='icons'
