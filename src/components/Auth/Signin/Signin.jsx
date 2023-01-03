@@ -63,9 +63,9 @@ const Signin = () => {
           {/* <span>Or Continue With</span> */}
 
           <div className="foot_icons">
-            <a href="https://infinite-cove-18126.herokuapp.com/auth/google" >
-              {/* <img src="https://img.icons8.com/color/48/000000/google-logo.png" alt='icons' /> */}
-            </a>
+            {/* <a href="https://infinite-cove-18126.herokuapp.com/auth/google" >
+              {/* <img src="https://img.icons8.com/color/48/000000/google-logo.png" alt='icons' />
+            /a> */}
           </div>
         </div>
       </div>

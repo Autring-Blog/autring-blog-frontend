@@ -11,7 +11,7 @@ const BlogCard = ({ data, deletePost, editPost }) => {
           src={
             photo
               ? photo
-              : require('https://img.freepik.com/free-vector/illustration-gallery-icon_53876-27002.jpg?size=626&ext=jpg')
+              : 'https://img.freepik.com/free-vector/illustration-gallery-icon_53876-27002.jpg?size=626&ext=jpg'
           }
           alt={category}
         />
