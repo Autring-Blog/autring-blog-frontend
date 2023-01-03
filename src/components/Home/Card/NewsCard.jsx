@@ -3,24 +3,26 @@ import { Link } from 'react-router-dom';
 
 import './NewsCard.css';
 
-const NewsCard = () => {
+const NewsCard = ({ blog }) => {
   return (
     <div className='news-card'>
       <div className='image-wrapper'>
-        <img src={require('../../../assets/images/news-card.png')} alt='' />
+        <img src={blog.photo[0]} alt='' />
       </div>
       <div className='news-card-content'>
         <h3 className='news_cardHeading'>
-          Tejas Mark-2 megaproject  approved by <br />Cabinet Committee on Security
+          {blog.mainHeading.length > 80 ? 
+                    blog.mainHeading.substring(0, 80) + " ...." : 
+                    blog.mainHeading}
         </h3>
 
         <p>
-          Tejas Mark-2 project has received approval from the PM led Cabinet
-          Committee on Security, advancing India's push for indigenous fighter
-          aircraft as Tejas Mark-2 project.
+          {blog.shortDescription.length > 150 ? 
+                    blog.shortDescription.substring(0, 150) + " ...." : 
+                    blog.shortDescription}
         </p>
         <div className='news-card-btn'>
-          <Link to={`/blog/${1}`}>
+          <Link to={`/blog/${blog._id}`}>
             Read more
             <span className='material-symbols-outlined'>chevron_right</span>
           </Link>

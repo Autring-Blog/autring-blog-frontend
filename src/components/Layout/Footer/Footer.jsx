@@ -29,6 +29,12 @@ const Footer = () => {
               <li>
                 <a href='#terms-of-services'>Lorem ipsum</a>
               </li>
+              <li>
+                <a href='#terms-of-services'>Lorem</a>
+              </li>
+              <li>
+                <a href='#terms-of-services'>Lorem</a>
+              </li>
             </ul>
           </div>
           <div className='footer-content'>

@@ -2,13 +2,14 @@ import React from 'react';
 import NewsCard from '../Card/NewsCard';
 import './Intro.css';
 
-function Intro() {
+function Intro({ blogs }) {
   return (
-    <div className='intro'>
-      <NewsCard />
-      <NewsCard />
-      <NewsCard />
-      <NewsCard />
+    <div className="intro">
+      <div className='news-card-list'>
+        {blogs && blogs.map((blog) => (
+          <NewsCard blog={blog} key={blog._id} />
+        ))}
+      </div>
     </div>
   );
 }

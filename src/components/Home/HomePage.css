@@ -16,3 +16,7 @@ hr {
   width: 100%;
   border: none;
 }
+
+.news-card-list::-webkit-scrollbar {
+  width: 10px;
+}
