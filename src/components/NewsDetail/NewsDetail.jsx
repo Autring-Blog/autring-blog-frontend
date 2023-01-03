@@ -11,7 +11,7 @@ import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
-const url ='http://localhost:3007'
+const url = 'https://www.theautring.com'
 const NewsDetail = () => {
   const [popUp, setPopUp] = useState(false);
   const handleShare = () => {
@@ -23,32 +23,31 @@ const NewsDetail = () => {
   };
   const { id } = useParams();
   const [blog, setBlog] = useState();
-  const [loading, setLoading] = useState(false);
   const [blogs, setBlogs] = useState([]);
 
   const getBlog = async () => {
-    setLoading(true);
-    const res = await axios({
-      url: `${url}/api/v1/getablog/${id}`,
-      headers: {
-        Authorization:
-          'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNjFlNDYxMzMxMzhhY2ZjNzQwNDM2MSIsImlhdCI6MTY2ODE4MTMxOCwiZXhwIjoxNjcwNzczMzE4fQ.KgVQNvodVCgAPU99mnektiz5KGAgrsReBDBFiT5SVgM',
-      },
-    });
+    const res = await axios(
+      `${url}/api/v1/getablog/${id}`,
+      {
+        xhrFields: {
+          withCredentials: true,
+        },
+        withCredentials: true,
+      });
     setBlog(res.data.data.blog);
-    setLoading(false);
     console.log(res.data.data.blog);
   }
 
 
   const getAllBlogs = async () => {
-    const res = await axios({
-      url: `${url}/api/v1/getallblog`,
-      headers: {
-        Authorization:
-          'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNjFlNDYxMzMxMzhhY2ZjNzQwNDM2MSIsImlhdCI6MTY2ODE4MTMxOCwiZXhwIjoxNjcwNzczMzE4fQ.KgVQNvodVCgAPU99mnektiz5KGAgrsReBDBFiT5SVgM',
-      },
-    });
+    const res = await axios(
+      `${url}/api/v1/getallblog`,
+      {
+        xhrFields: {
+          withCredentials: true,
+        },
+        withCredentials: true,
+      });
 
     setBlogs(res.data.data.blog);
   }
