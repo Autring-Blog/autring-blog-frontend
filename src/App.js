@@ -17,10 +17,10 @@ function App() {
         <Route element={<ProtectedRoute />} >
           <Route exact path='/' element={<HomePage />} />
           <Route exact path='/favourite' element={<Favourite />} />
-          <Route exact path='/dashboard' element={<Dashboard />} />
           <Route exact path='/blog/:id' element={<NewsDetail />} />
           <Route exact path='/blogs/:category' element={<NewsCategory />} />
         </Route>
+          <Route exact path='/dashboard' element={<Dashboard />} />
       </Routes>
     </div>
   );

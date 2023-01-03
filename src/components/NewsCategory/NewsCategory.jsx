@@ -10,6 +10,7 @@ import axios from 'axios';
 import '../Home/HomePage.css';
 
 
+const url = 'https://www.theautring.com/api/v1';
 
 const NewsCategory = () => {
   const { category } = useParams();
@@ -18,13 +19,13 @@ const NewsCategory = () => {
   const [loading, setLoading] = useState(false);
   const getAllBlogs = async () => {
     setLoading(true);
-    const res = await axios({
-      url: 'http://localhost:3007/api/v1/getallblog',
-      headers: {
-        Authorization:
-          'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNjFlNDYxMzMxMzhhY2ZjNzQwNDM2MSIsImlhdCI6MTY2ODE4MTMxOCwiZXhwIjoxNjcwNzczMzE4fQ.KgVQNvodVCgAPU99mnektiz5KGAgrsReBDBFiT5SVgM',
-      },
-    });
+    const res = await axios.get(`${url}/getallblog`,
+      {
+        xhrFields: {
+          withCredentials: true,
+        },
+        withCredentials: true,
+      });
 
     setBlogs(res.data.data.blog);
     setLoading(false);

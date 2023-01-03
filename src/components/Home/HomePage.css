@@ -10,10 +10,11 @@
 }
  */
 
- hr{
-   color: yellow;
-   position: absolute;
-   top: 10px;
+hr {
+  background-color: #eae509;
+  height: 0.2rem;
+  width: 100%;
+  border: none;
 }
 
 .news-card-list::-webkit-scrollbar {

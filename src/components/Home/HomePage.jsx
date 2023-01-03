@@ -14,7 +14,13 @@ const HomePage = () => {
   const [loading, setLoading] = useState(false);
   const getAllBlogs = async () => {
     setLoading(true);
-    const res = await axios.get(`${url}/api/v1/getallblog`);
+    const res = await axios.get(`${url}/api/v1/getallblog`,
+      {
+        xhrFields: {
+          withCredentials: true,
+        },
+        withCredentials: true,
+      });
     setBlogs(res.data.data.blog);
     setLoading(false);
   }

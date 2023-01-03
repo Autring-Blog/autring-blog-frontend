@@ -1,57 +1,66 @@
 .trending {
-    min-height: 786px;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    padding: 15px;
-    margin: 0px;
-    background: #f8f7f2;
-  }
-  .trending_container {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    width: 100%;
-    height: auto;
-    padding: 0px;
-    margin: 0px;
-  }
-  
-  .trending_search_form {
-    position: relative;
-  }
-  
-  .trending_search_form > input {
-    width: 95%;
-    height: 46px;
-    box-sizing: border-box;
-    border: 2px solid #2b7a0b;
-    border-radius: 10px;
-    text-align: left;
-    padding-left: 35px;
-    font-family: "Quicksand";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 20px;
-    opacity: 0.55;
-    line-height: 25px;
-  }
-  
-  .search_icon {
-    position: absolute;
-    top: 25%;
-    left: 45px;
-  }
-  
-  .trending_main_heaing {
-    width: 204px;
-    height: 44px;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 35px;
-    line-height: 44px;
-    color: #000000;
-    margin-left: 40px;
-  }
-  
+  /* min-height: 500px; */
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 3rem 0;
+  gap: 2rem;
+  margin: 0px;
+  background: #f8f7f2;
+}
+.trending_container {
+  margin: 0 1rem;
+  display: flex;
+  justify-content: space-between;
+  /* width: 100%; */
+  height: 30rem;
+  padding: 0 1rem;
+  display: flex;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  gap: 1rem;
+}
+
+.trending_container > .news-card {
+  background-color: #fff;
+}
+
+.trending_search_form {
+  margin: 0 2rem;
+  position: relative;
+}
+
+.trending_search_form > input {
+  width: 95%;
+  height: 46px;
+  box-sizing: border-box;
+  border: 2px solid #2b7a0b;
+  border-radius: 10px;
+  text-align: left;
+  padding: 1rem;
+  font-family: 'Quicksand';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  opacity: 0.55;
+  line-height: 25px;
+}
+
+.search_icon {
+  position: absolute;
+  top: 25%;
+  left: 45px;
+}
+
+.trending_main_heading {
+  margin: 0 3rem;
+  /* width: 204px; */
+  /* height: 44px; */
+  font-style: normal;
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 44px;
+  color: #000000;
+  /* margin-left: 40px; */
+}

@@ -21,13 +21,15 @@ const Dashboard = () => {
   const getAllBlogs = async () => {
     setLoading(true);
     try {
-      const res = await axios({
-        url: `${url}/api/v1/getallblog`,
-        headers: {
-          Authorization:
-            'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNjFlNDYxMzMxMzhhY2ZjNzQwNDM2MSIsImlhdCI6MTY2ODE4MTMxOCwiZXhwIjoxNjcwNzczMzE4fQ.KgVQNvodVCgAPU99mnektiz5KGAgrsReBDBFiT5SVgM',
-        },
-      });
+      const res = await axios.get(
+        'https://www.theautring.com/api/v1/getallblog',
+        {
+          xhrFields: {
+            withCredentials: true,
+          },
+          withCredentials: true,
+        }
+      );
 
       setBlogList(res.data.data.blog);
       console.log(res.data.data.blog);
@@ -63,7 +65,7 @@ const Dashboard = () => {
 
     try {
       const postBlog = await axios.post(
-        `${url}/api/v1/postablog`,
+        'https://www.theautring.com/api/v1/postablog',
         {
           photo,
           inPhotoTitle,
@@ -74,13 +76,12 @@ const Dashboard = () => {
         },
         {
           headers: {
-            Authorization:
-              'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNjFlNDYxMzMxMzhhY2ZjNzQwNDM2MSIsImlhdCI6MTY2ODE4MTMxOCwiZXhwIjoxNjcwNzczMzE4fQ.KgVQNvodVCgAPU99mnektiz5KGAgrsReBDBFiT5SVgM',
             'Content-Type': 'multipart/form-data',
           },
           xhrFields: {
             withCredentials: true,
           },
+          withCredentials: true,
         }
       );
 
@@ -90,7 +91,7 @@ const Dashboard = () => {
 
       console.log(res.data);
     } catch (err) {
-      console.error('error post the blog', err.message);
+      console.error('error post the blog', err);
     }
   };
 
@@ -99,16 +100,12 @@ const Dashboard = () => {
     if (confirm) {
       try {
         await axios.delete(
-          `${url}/api/v1/deleteblog/${id}`,
+          `https://www.theautring.com/api/v1/deleteblog/${id}`,
           {
-            headers: {
-              Authorization:
-                'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNjFlNDYxMzMxMzhhY2ZjNzQwNDM2MSIsImlhdCI6MTY2ODE4MTMxOCwiZXhwIjoxNjcwNzczMzE4fQ.KgVQNvodVCgAPU99mnektiz5KGAgrsReBDBFiT5SVgM',
-              'Content-Type': 'multipart/form-data',
-            },
             xhrFields: {
               withCredentials: true,
             },
+            withCredentials: true,
           }
         );
         getAllBlogs();
@@ -154,30 +151,41 @@ const Dashboard = () => {
 
     try {
       const updateBlog = await axios.patch(
-        `${url}/api/v1/updateblog/${id}`,
+        `https://www.theautring.com/api/v1/updateblog/${id}`,
         {
           category,
-          photo,
           inPhotoTitle,
           mainHeading,
           shortDescription,
           paragraphDescription,
         },
         {
+          xhrFields: {
+            withCredentials: true,
+          },
+          withCredentials: true,
+        }
+      );
+      const updatePhoto = await axios.patch(
+        `https://www.theautring.com/api/v1/updateblogphoto/${id}`,
+        { photo },
+        {
           headers: {
-            Authorization:
-              'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNjFlNDYxMzMxMzhhY2ZjNzQwNDM2MSIsImlhdCI6MTY2ODE4MTMxOCwiZXhwIjoxNjcwNzczMzE4fQ.KgVQNvodVCgAPU99mnektiz5KGAgrsReBDBFiT5SVgM',
+            'Content-Type': 'multipart/form-data',
           },
           xhrFields: {
             withCredentials: true,
           },
+          withCredentials: true,
         }
       );
       const res = await updateBlog;
+      const changePhoto = await updatePhoto;
       getAllBlogs();
       reset();
       setIsEdit(false);
       console.log(res);
+      console.log(changePhoto);
     } catch (error) {
       console.error('Something went wrong', error);
     }

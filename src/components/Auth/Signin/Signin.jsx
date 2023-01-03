@@ -34,8 +34,8 @@ const Signin = () => {
 
   return (
     <div className='Signin_wrapper'>
-      <div className="signin_logo">
-        <img src={logo} alt="logo" />
+      <div className='signin_logo'>
+        <img src={logo} alt='logo' />
         <span className='head_up'>Sign In</span>
       </div>
       <div className="signin_details">
@@ -51,8 +51,10 @@ const Signin = () => {
               {/* <span>Forgot Password</span> */}
             </div>
           </div>
-          <div className="signin_button">
-            <button className="custom_button" type='submit' >Sign In</button>
+          <div className='signin_button'>
+            <button className='custom_button' type='submit'>
+              Sign In
+            </button>
           </div>
         </form>
         <div className="signin_foot">
@@ -68,7 +70,7 @@ const Signin = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Signin
+export default Signin;
