@@ -1,26 +1,32 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react'
+import { useParams } from 'react-router-dom'
 import Navbar from '../Layout/Navbar/Navbar';
-import './HomePage.css';
 import Footer from '../Layout/Footer/Footer';
-import Intro from './Intro/Intro';
-import Trending from './Trending/Trending';
-import News from '../Home/News/News';
-import NewsLetter from './NewsLetter/NewsLetter';
-import Carousel from './Carousel/Carousel';
+import Intro from '../Home/Intro/Intro'
+import Carousel from '../Home/Carousel/Carousel'
+import Trending from '../Home/Trending/Trending'
+import News from '../Home/News/News'
 import axios from 'axios';
-const url = 'https://www.theautring.com';
-const HomePage = () => {
+import '../Home/HomePage.css';
+
+
+const url = 'https://www.theautring.com/api/v1';
+
+const NewsCategory = () => {
+  const { category } = useParams();
+
   const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(false);
   const getAllBlogs = async () => {
     setLoading(true);
-    const res = await axios.get(`${url}/api/v1/getallblog`,
+    const res = await axios.get(`${url}/getallblog`,
       {
         xhrFields: {
           withCredentials: true,
         },
         withCredentials: true,
       });
+
     setBlogs(res.data.data.blog);
     setLoading(false);
   }
@@ -33,16 +39,14 @@ const HomePage = () => {
     <>
       <Navbar />
       <hr />
-
       {!loading && <Carousel blogs={blogs} />}
       {!loading && <Intro blogs={blogs} />}
       {!loading && <Trending blogs={blogs} />}
       {!loading && <News blogs={blogs} />}
-
-      <NewsLetter />
       <Footer />
     </>
   );
 };
+export default NewsCategory
 
-export default HomePage;
+

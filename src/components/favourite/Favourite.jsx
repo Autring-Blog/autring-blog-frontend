@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import FavouriteCard from './card/FavouriteCard';
 import './Favourite.css';
 
@@ -52,6 +53,7 @@ const data = [
 ];
 
 const Favourite = () => {
+  const navigate = useNavigate();
   const [input, setInput] = useState('');
   const [dataList, setDataList] = useState([
     ...data.map((item) => {
@@ -74,8 +76,9 @@ const Favourite = () => {
   };
 
   const handleDone = () => {
-    if (!modalList.length) return;
     console.log(modalList);
+    localStorage.setItem('catogory', JSON.stringify(modalList));
+    navigate('/');
   };
 
   return (

@@ -3,7 +3,9 @@ import './Trending.css';
 // import { KeyboardArrowRight, Search } from "@material-ui/icons";
 import NewsCard from '../Card/NewsCard';
 
-function News() {
+
+function News({ blogs }) {
+
   const [search, setSearch] = useState('');
 
   return (
@@ -21,12 +23,14 @@ function News() {
         </div>
         {/* <input type='text' name='search' placeholder='Search' /> */}
       </form>
-      <h1 className='trending_main_heading'>Trending</h1>
-      <div className='trending_container'>
-        <NewsCard />
-        <NewsCard />
-        <NewsCard />
-        <NewsCard />
+      <h1 className="trending_main_heaing">Trending</h1>
+      <div className="trending_container">
+        <div className='news-card-list'>
+
+          {blogs && blogs.map((blog) => (
+            <NewsCard blog={blog} key={blog._id} />
+          ))}
+        </div>
       </div>
     </div>
   );

@@ -4,6 +4,8 @@ import BlogCard from './card/BlogCard';
 
 import './Dashboard.css';
 import Loader from '../Loader/Loader';
+const url ='http://localhost:3007'
+
 const Dashboard = () => {
   const [loading, setLoading] = useState(false);
   const [blogList, setBlogList] = useState([]);
