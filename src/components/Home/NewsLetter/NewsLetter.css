@@ -105,6 +105,9 @@
 }
 
 @media (max-width: 450px) {
+  .news_letter {
+    padding: 3rem 1rem;
+  }
   .news_letter_heading {
     height: 44px;
     font-family: "Quicksand";
@@ -123,4 +126,10 @@
     padding-top: 2rem;
     height: 350px;
   }
+
+
+  .news_letter_form {
+    width: 100%;
+  }
 }
+

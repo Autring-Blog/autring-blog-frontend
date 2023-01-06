@@ -25,5 +25,13 @@ html,
 }
 
 div::-webkit-scrollbar {
-  height: 0px;
+  height: 5px;
+}
+
+div::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+div::-webkit-scrollbar-thumb {
+  background-color: rgb(221, 221, 221);
 }

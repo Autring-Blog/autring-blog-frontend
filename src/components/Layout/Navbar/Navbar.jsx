@@ -59,7 +59,17 @@ function Navbar() {
       </div>
       <div className='navbar-search'>
         {/* <i className='big search link icon'></i>{' '} */}
-        <span className='material-symbols-outlined'>search</span>
+        <input
+          className='search__input'
+          type='text'
+          placeholder='Enter your search'
+          aria-label='search'
+        />
+        <button className='search__submit'>
+          <i className='material-symbols-outlined' aria-label='submit search'>
+            search
+          </i>
+        </button>
       </div>
     </div>
   );

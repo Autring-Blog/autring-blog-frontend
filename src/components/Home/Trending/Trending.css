@@ -12,7 +12,7 @@
 .trending_container {
   margin: 0 1rem;
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   /* width: 100%; */
   height: 30rem;
   padding: 0 1rem;
@@ -47,10 +47,28 @@
   line-height: 25px;
 }
 
-.search_icon {
-  position: absolute;
-  top: 25%;
-  left: 45px;
+.home-search {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #2b7a0b;
+  border-radius: 10px;
+  padding: 0.5rem;
+  margin-bottom: 3rem;
+  margin: 0 0.5rem;
+}
+.home-search span {
+  margin-right: 1rem;
+}
+
+.home-search input {
+  width: 100%;
+  border: none;
+  outline: none;
+  background-color: #f8f7f2;
+  font-size: 1.2rem;
+  /* color: #f8f7f2; */
+  opacity: 0.55;
 }
 
 .trending_main_heading {

@@ -57,6 +57,7 @@ const Signin = () => {
             </button>
           </div>
         </form>
+
         <div className="signin_foot">
           <span onClick={() => navigate('/signup')}>Don't Have An Account?</span>
           <span onClick={() => navigate('/signup')}>Sign Up</span>
@@ -66,6 +67,7 @@ const Signin = () => {
             {/* <a href="https://infinite-cove-18126.herokuapp.com/auth/google" >
               {/* <img src="https://img.icons8.com/color/48/000000/google-logo.png" alt='icons' />
             /a> */}
+
           </div>
         </div>
       </div>
