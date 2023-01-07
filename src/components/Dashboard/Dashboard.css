@@ -68,6 +68,17 @@ textarea:focus {
   gap: 1rem;
 }
 
+.btn-logout {
+  margin: 0.5rem 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  background-color: #eae609;
+  border: none;
+}
+.btn-logout:hover {
+  filter: brightness(105%);
+}
+
 /* media query */
 
 @media (max-width: 1280px) {

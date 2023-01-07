@@ -1,48 +1,57 @@
-import axios from "axios";
-import { CLEAR_ERRORS, LOGIN_FAIL, LOGIN_REQUEST, LOGIN_SUCCESS, REGISTER_FAIL, REGISTER_REQUEST, REGISTER_SUCCESS } from "../constants/userConstant";
-const URL = 'https://www.theautring.com/api/v1'
+import axios from 'axios';
+import {
+  CLEAR_ERRORS,
+  LOGIN_FAIL,
+  LOGIN_REQUEST,
+  LOGIN_SUCCESS,
+  REGISTER_FAIL,
+  REGISTER_REQUEST,
+  REGISTER_SUCCESS,
+} from '../constants/userConstant';
+const URL = 'https://www.theautring.com/api/v1';
 export const login = (email, password) => async (dispatch) => {
-    try {
-        dispatch({ type: LOGIN_REQUEST });
+  try {
+    dispatch({ type: LOGIN_REQUEST });
 
+    const { data } = await axios.post(
+      `${URL}/login`,
+      { email, password },
+      {
+        xhrFields: {
+          withCredentials: true,
+        },
+        withCredentials: true,
+      }
+    );
+    console.log(data);
 
-        const { data } = await axios.post(
-            `${URL}/login`,
-            { email, password },
-            {
-                xhrFields: {
-                    withCredentials: true,
-                },
-                withCredentials: true,
-            }
-        );
-        console.log(data);
+    localStorage.setItem('token', data.token);
+    localStorage.setItem('user', JSON.stringify(data.user));
+    localStorage.setItem('loggedIn', true);
 
-        dispatch({ type: LOGIN_SUCCESS, payload: data.user });
-    } catch (error) {
-        console.log(error)
-        dispatch({ type: LOGIN_FAIL, payload: error.response.data.error });
-    }
+    dispatch({ type: LOGIN_SUCCESS, payload: data.user });
+  } catch (error) {
+    console.log(error);
+    dispatch({ type: LOGIN_FAIL, payload: error.response.data.error });
+  }
 };
-
 
 //REGISTER
 export const register = (userData) => async (dispatch) => {
-    try {
-        dispatch({ type: REGISTER_REQUEST });
-        console.log(userData)
-        const { data } = await axios.post(`${URL}/signup`,
-            userData
-        );
-        dispatch({ type: REGISTER_SUCCESS, payload: data.user });
-    } catch (error) {
-        console.log(error)
-        dispatch({ type: REGISTER_FAIL, payload: error.response.data.error });
-    }
+  try {
+    dispatch({ type: REGISTER_REQUEST });
+    console.log(userData);
+    const { data } = await axios.post(`${URL}/signup`, userData);
+    dispatch({ type: REGISTER_SUCCESS, payload: data.user });
+  } catch (error) {
+    console.log(error);
+    dispatch({ type: REGISTER_FAIL, payload: error.response.data.error });
+  }
 };
 
-
-
+export const logOut = () => {
+  localStorage.clear();
+};
 
 // // Load User
 // export const loadUser = () => async (dispatch) => {
@@ -56,7 +65,7 @@ export const register = (userData) => async (dispatch) => {
 // };
 
 export const clearErrors = () => async (dispatch) => {
-    dispatch({
-        type: CLEAR_ERRORS
-    })
-}
+  dispatch({
+    type: CLEAR_ERRORS,
+  });
+};

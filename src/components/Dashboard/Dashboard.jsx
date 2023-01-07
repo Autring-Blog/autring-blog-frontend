@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import BlogCard from './card/BlogCard';
+import { logOut } from '../../redux/actions/userAction';
+import { useDispatch } from 'react-redux';
 
 import './Dashboard.css';
 import Loader from '../Loader/Loader';
-const url ='http://localhost:3007'
+import { Link, useNavigate } from 'react-router-dom';
+const url = 'http://localhost:3007';
 
 const Dashboard = () => {
   const [loading, setLoading] = useState(false);
@@ -17,6 +20,9 @@ const Dashboard = () => {
   const [paragraphDescription, setParagraphDescription] = useState('');
   const [isEdit, setIsEdit] = useState(false);
   const [itemId, setItemId] = useState('');
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const getAllBlogs = async () => {
     setLoading(true);
@@ -190,97 +196,105 @@ const Dashboard = () => {
       console.error('Something went wrong', error);
     }
   };
-  console.log(photo);
+  const handleLogOut = () => {
+    dispatch(logOut);
+    navigate('/signin');
+  };
 
   return (
-    <div className='dashboard'>
-      <div className='left-dashboard'>
-        <form onSubmit={handleSubmit}>
-          <div className='form-control'>
-            <input
-              type='file'
-              name='photo'
-              onChange={(e) => setPhoto(e.target.files[0])}
-              required
-            />
-          </div>
-          <div className='form-control'>
-            <input
-              type='text'
-              id='photoTitle'
-              value={inPhotoTitle}
-              onChange={(e) => setInPhotoTitle(e.target.value)}
-              placeholder='Photo Title'
-            />
-          </div>
-          <div className='form-control'>
-            <input
-              type='text'
-              id='category'
-              value={category}
-              onChange={(e) => setCategory(e.target.value)}
-              placeholder='Category'
-              required
-            />
-          </div>
-          <div className='form-control'>
-            <input
-              type='text'
-              id='mainHeading'
-              value={mainHeading}
-              onChange={(e) => setMainHeading(e.target.value)}
-              placeholder='Main Heading'
-              required
-            />
-          </div>
-          <div className='form-control'>
-            <input
-              type='text'
-              id='shortDescription'
-              value={shortDescription}
-              onChange={(e) => setShortDescription(e.target.value)}
-              placeholder='Short Description'
-              required
-            />
-          </div>
-          <div className='form-control'>
-            <textarea
-              type='text'
-              id='description'
-              value={paragraphDescription}
-              onChange={(e) => setParagraphDescription(e.target.value)}
-              placeholder='Description'
-              rows='10'
-              cols='30'
-            ></textarea>
-          </div>
-
-          {!isEdit ? (
-            <button>Add</button>
-          ) : (
-            <button type='button' onClick={editPost}>
-              Edit
-            </button>
-          )}
-        </form>
-      </div>
-      <div className='right-dashboard'>
-        <div className='blog-list'>
-          {loading ? (
-            <Loader />
-          ) : (
-            blogList.map((blog, idx) => (
-              <BlogCard
-                data={blog}
-                deletePost={deletePost}
-                editPost={editValue}
-                key={idx}
+    <>
+      <button className='btn-logout' onClick={handleLogOut}>
+        logout
+      </button>
+      <div className='dashboard'>
+        <div className='left-dashboard'>
+          <form onSubmit={handleSubmit}>
+            <div className='form-control'>
+              <input
+                type='file'
+                name='photo'
+                onChange={(e) => setPhoto(e.target.files[0])}
+                required
               />
-            ))
-          )}
+            </div>
+            <div className='form-control'>
+              <input
+                type='text'
+                id='photoTitle'
+                value={inPhotoTitle}
+                onChange={(e) => setInPhotoTitle(e.target.value)}
+                placeholder='Photo Title'
+              />
+            </div>
+            <div className='form-control'>
+              <input
+                type='text'
+                id='category'
+                value={category}
+                onChange={(e) => setCategory(e.target.value)}
+                placeholder='Category'
+                required
+              />
+            </div>
+            <div className='form-control'>
+              <input
+                type='text'
+                id='mainHeading'
+                value={mainHeading}
+                onChange={(e) => setMainHeading(e.target.value)}
+                placeholder='Main Heading'
+                required
+              />
+            </div>
+            <div className='form-control'>
+              <input
+                type='text'
+                id='shortDescription'
+                value={shortDescription}
+                onChange={(e) => setShortDescription(e.target.value)}
+                placeholder='Short Description'
+                required
+              />
+            </div>
+            <div className='form-control'>
+              <textarea
+                type='text'
+                id='description'
+                value={paragraphDescription}
+                onChange={(e) => setParagraphDescription(e.target.value)}
+                placeholder='Description'
+                rows='10'
+                cols='30'
+              ></textarea>
+            </div>
+
+            {!isEdit ? (
+              <button>Add</button>
+            ) : (
+              <button type='button' onClick={editPost}>
+                Edit
+              </button>
+            )}
+          </form>
+        </div>
+        <div className='right-dashboard'>
+          <div className='blog-list'>
+            {loading ? (
+              <Loader />
+            ) : (
+              blogList.map((blog, idx) => (
+                <BlogCard
+                  data={blog}
+                  deletePost={deletePost}
+                  editPost={editValue}
+                  key={idx}
+                />
+              ))
+            )}
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
