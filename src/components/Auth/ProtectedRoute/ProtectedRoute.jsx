@@ -11,12 +11,12 @@ const ProtectedRoute = () => {
   const user = JSON.parse(localStorage.getItem('user'));
   console.log(isAuthenticated);
 
-  if (!user) {
+  if (!isAuthenticated) {
     return <Navigate to='/signin' />;
-  } else {
-    if (user && user.role === 'admin') {
-      return <Navigate to='/dashboard' />;
-    }
+  }
+
+  if (user && user.role === 'admin') {
+    return <Navigate to='/dashboard' />;
   }
   return loading === false && <Outlet />;
 };
