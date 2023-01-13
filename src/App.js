@@ -1,5 +1,5 @@
 import HomePage from './components/Home/HomePage';
-import Favourite from './components/favourite/Favourite';
+import Favourite from './components/Favourite/Favourite';
 
 import Signin from './components/Auth/Signin/Signin';
 import Signup from './components/Auth/Signup/Signup';
@@ -11,7 +11,6 @@ import ProtectedRoute from './components/Auth/ProtectedRoute/ProtectedRoute';
 
 
 function App() {
-  const loggedIn = localStorage.getItem('loggedIn');
   return (
     <div className='App'>
       <Routes>

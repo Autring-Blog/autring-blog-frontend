@@ -62,6 +62,9 @@ function Navbar() {
               {navItem.name}
             </Link>
           ))}
+        <Link to={'/signin'} className='item'>
+          Login
+        </Link>
       </div>
       <div className='navbar-search'>
         <input
