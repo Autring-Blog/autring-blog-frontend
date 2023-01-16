@@ -4,7 +4,7 @@ import NewsCard from '../Card/NewsCard';
 
 function News({ blogs }) {
   return (
-    <div className='news'>
+    <div className='news' id='latest'>
       <h1 className='news_main_heading'>Latest News</h1>
       <div className='news_container'>
         <div className='news-card-list'>
