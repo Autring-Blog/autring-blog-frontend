@@ -36,8 +36,6 @@ const Footer = () => {
           <div className='footer-content'>
             <h3 className='footer-subheading'>Contact Us</h3>
             <p className='contactUs'>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
             </p>
             <div className='footer-icons'>
               <i className='large youtube icon' onClick={() => window.open('https://youtube.com/@TheAutring', '_blank')}></i>
