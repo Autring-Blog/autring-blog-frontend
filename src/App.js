@@ -9,7 +9,6 @@ import Dashboard from './components/Dashboard/Dashboard';
 import NewsCategory from './components/NewsCategory/NewsCategory';
 import ProtectedRoute from './components/Auth/ProtectedRoute/ProtectedRoute';
 
-
 function App() {
   return (
     <div className='App'>
