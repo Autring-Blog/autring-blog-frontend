@@ -44,7 +44,7 @@ function Navbar() {
   };
 
   return (
-    <div className='navbar'>
+    <div className='navbar' id='navbar'>
       <div className='brand-logo'>
         {<img src={NavbarImage} alt='brand-logo' />}
       </div>

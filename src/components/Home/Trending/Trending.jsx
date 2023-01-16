@@ -9,10 +9,10 @@ function News({ blogs }) {
   const [search, setSearch] = useState('');
 
   return (
-    <div className='trending'>
+    <div className='trending' id='trending'>
       <form className='trending_search_form'>
         {/* <Search className='search_icon' /> */}
-        <div className='home-search'>
+        <div className='home-search' id='home-search'>
           <span className='material-symbols-outlined'>search</span>
           <input
             type='search'
