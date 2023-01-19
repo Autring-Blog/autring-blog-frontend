@@ -1,12 +1,28 @@
+import axios from "axios";
 import React, { useState } from "react";
 import "./NewsLetter.css";
+const url = 'https://www.theautring.com/api/v1';
 
 const NewsLetter = () => {
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("")
-  const handleSubscribe = () => {
+  const handleSubscribe = async () => {
     console.log(name, email);
+    try {
+
+      const res = await axios.post(`${url}/newsletteruser`, {
+        name: name,
+        email: email
+      });
+      console.log(res);
+      if (res.data.user.newsuser.email) {
+        alert("User subscribed successfully")
+      }
+    } catch (error) {
+      console.log(error);
+      alert(error.response.data.message)
+    }
   }
   return (
     <div className="news_letter">

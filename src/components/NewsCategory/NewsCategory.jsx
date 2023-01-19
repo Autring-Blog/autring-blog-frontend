@@ -19,16 +19,22 @@ const NewsCategory = () => {
   const [loading, setLoading] = useState(false);
   const getAllBlogs = async () => {
     setLoading(true);
-    const res = await axios.get(`${url}/getallblog?category=${category}`,
-      {
-        xhrFields: {
-          withCredentials: true,
-        },
-        withCredentials: true,
-      });
+    try {
 
-    setBlogs(res.data.data.blog);
-    setLoading(false);
+      const res = await axios.get(`${url}/getallblog?category=${category}`,
+        {
+          xhrFields: {
+            withCredentials: true,
+          },
+          withCredentials: true,
+        });
+
+      setBlogs(res.data.data.blog);
+      setLoading(false);
+    } catch (error) {
+      console.log(error)
+      setLoading(false);
+    }
   }
 
   useEffect(() => {
