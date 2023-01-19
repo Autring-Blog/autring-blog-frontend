@@ -19,7 +19,7 @@ const NewsCategory = () => {
   const [loading, setLoading] = useState(false);
   const getAllBlogs = async () => {
     setLoading(true);
-    const res = await axios.get(`${url}/getallblog`,
+    const res = await axios.get(`${url}/getallblog?category=${category}`,
       {
         xhrFields: {
           withCredentials: true,
@@ -33,16 +33,21 @@ const NewsCategory = () => {
 
   useEffect(() => {
     getAllBlogs();
-  }, [])
+  }, [category])
 
   return (
     <>
       <Navbar />
       <hr />
-      {!loading && <Carousel blogs={blogs} />}
-      {!loading && <Intro blogs={blogs} />}
-      {!loading && <Trending blogs={blogs} />}
-      {!loading && <News blogs={blogs} />}
+      {
+        blogs.length < 1 ? <h1 style={{ textAlign: 'center' }}>no blogs yet</h1> :
+          <div>
+            {!loading && <Carousel blogs={blogs} />}
+            {!loading && <Intro blogs={blogs} />}
+            {!loading && <Trending blogs={blogs} />}
+            {!loading && <News blogs={blogs} />}
+          </div>
+      }
       <Footer />
     </>
   );

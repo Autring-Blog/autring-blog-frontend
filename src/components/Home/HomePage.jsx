@@ -34,10 +34,15 @@ const HomePage = () => {
       <Navbar />
       <hr />
 
-      {!loading && <Carousel blogs={blogs} />}
-      {!loading && <Intro blogs={blogs} />}
-      {!loading && <Trending blogs={blogs} />}
-      {!loading && <News blogs={blogs} />}
+      {
+        blogs.length < 1 ? <h1>no blogs yet</h1> :
+          <div>
+            {!loading && <Carousel blogs={blogs} />}
+            {!loading && <Intro blogs={blogs} />}
+            {!loading && <Trending blogs={blogs} />}
+            {!loading && <News blogs={blogs} />}
+          </div>
+      }
 
       <NewsLetter />
       <Footer />
