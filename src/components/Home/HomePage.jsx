@@ -21,7 +21,7 @@ const HomePage = () => {
         },
         withCredentials: true,
       });
-      setBlogs(res.data.data.blog.reverse());
+      setBlogs(res.data.data.blog);
       setLoading(false);
     } catch (error) {
       console.log(error);

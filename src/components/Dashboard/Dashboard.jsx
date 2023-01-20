@@ -36,7 +36,7 @@ const Dashboard = () => {
         }
       );
 
-      setBlogList(res.data.data.blog.reverse());
+      setBlogList(res.data.data.blog);
       console.log(res.data.data.blog);
       setLoading(false);
     } catch (err) {
