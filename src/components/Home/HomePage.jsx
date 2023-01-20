@@ -14,15 +14,21 @@ const HomePage = () => {
   const [loading, setLoading] = useState(false);
   const getAllBlogs = async () => {
     setLoading(true);
-    const res = await axios.get(`${url}/api/v1/getallblog`,
-      {
-        xhrFields: {
+    try {
+
+      const res = await axios.get(`${url}/api/v1/getallblog`,
+        {
+          xhrFields: {
+            withCredentials: true,
+          },
           withCredentials: true,
-        },
-        withCredentials: true,
-      });
-    setBlogs(res.data.data.blog);
-    setLoading(false);
+        });
+      setBlogs(res.data.data.blog);
+      setLoading(false);
+    } catch (error) {
+      console.log(error)
+      setLoading(false);
+    }
   }
 
   useEffect(() => {
@@ -34,10 +40,15 @@ const HomePage = () => {
       <Navbar />
       <hr />
 
-      {!loading && <Carousel blogs={blogs} />}
-      {!loading && <Intro blogs={blogs} />}
-      {!loading && <Trending blogs={blogs} />}
-      {!loading && <News blogs={blogs} />}
+      {
+        blogs.length < 1 ? <h1 style={{ textAlign: 'center' }}>no blogs yet</h1> :
+          <div>
+            {!loading && <Carousel blogs={blogs} />}
+            {!loading && <Intro blogs={blogs} />}
+            {!loading && <Trending blogs={blogs} />}
+            {!loading && <News blogs={blogs} />}
+          </div>
+      }
 
       <NewsLetter />
       <Footer />
