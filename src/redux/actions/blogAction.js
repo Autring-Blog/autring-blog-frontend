@@ -1,4 +1,4 @@
-const URL = 'https://www.theautring.com/api/v1';
+const URL = 'https://api.theautring.com/api/v1';
 
 
 export const getAllBlogs = (email, password) => async (dispatch) => {
