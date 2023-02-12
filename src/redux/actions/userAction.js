@@ -8,7 +8,7 @@ import {
   REGISTER_REQUEST,
   REGISTER_SUCCESS,
 } from '../constants/userConstant';
-const URL = 'https://www.theautring.com/api/v1';
+const URL = 'https://api.theautring.com/api/v1';
 export const login = (email, password) => async (dispatch) => {
   try {
     dispatch({ type: LOGIN_REQUEST });
