@@ -9,6 +9,18 @@ import {
   REGISTER_SUCCESS,
 } from '../constants/userConstant';
 const URL = 'https://api.theautring.com/api/v1';
+
+const deleteAllCookies = () => {
+  const cookies = document.cookie.split(";");
+
+  for (let i = 0; i < cookies.length; i++) {
+    const cookie = cookies[i];
+    const eqPos = cookie.indexOf("=");
+    const name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+    document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+  }
+}
+
 export const login = (email, password) => async (dispatch) => {
   try {
     dispatch({ type: LOGIN_REQUEST });
@@ -51,6 +63,7 @@ export const register = (userData) => async (dispatch) => {
 
 export const logOut = () => {
   localStorage.clear();
+  deleteAllCookies()
 };
 
 // // Load User
