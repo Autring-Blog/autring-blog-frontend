@@ -15,12 +15,7 @@ const HomePage = () => {
   const getAllBlogs = async () => {
     setLoading(true);
     try {
-      const res = await axios.get(`${url}/api/v1/getallblog`, {
-        xhrFields: {
-          withCredentials: true,
-        },
-        withCredentials: true,
-      });
+      const res = await axios.get(`${url}/api/v1/getallblog`);
       setBlogs(res.data.data.blog);
       setLoading(false);
     } catch (error) {
