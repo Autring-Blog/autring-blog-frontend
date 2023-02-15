@@ -21,11 +21,9 @@ function App() {
 				</Route>
 				<Route exact path="/blog/:id" element={<NewsDetail />} />
 				<Route exact path="/blogs/:category" element={<NewsCategory />} />
-				<Route exact path="/dashboard" element={
-					<ProtectedRoute>
-						<Dashboard />
-					</ProtectedRoute>
-					} />
+				<Route element={<ProtectedRoute />}>
+					<Route exact path="/dashboard" element={<Dashboard />} />
+				</Route>
 			</Routes>
 		</div>
 	);
