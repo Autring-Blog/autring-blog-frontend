@@ -186,9 +186,9 @@ const Dashboard = () => {
              description: '',
              selectCategory:''
             }}
-            onSubmit={(values,{setSubmitting}) => {
-            const handleSubmit = async (e) => {
-            e.preventDefault();
+            onSubmit={(values) => {
+             const onSubmit = async (e) => {
+          
            console.log({
            chooseFile,
            photoTitle,
