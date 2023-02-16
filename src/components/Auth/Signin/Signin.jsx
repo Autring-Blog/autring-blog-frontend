@@ -28,6 +28,7 @@ const Signin = () => {
     }
     if (isAuthenticated) {
       navigate("/dashboard");
+    window.location.reload(true);
     }
   }, [dispatch, error, alert, isAuthenticated, navigate]);
 
