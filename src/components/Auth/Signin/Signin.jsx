@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import "./Signin.css";
 import logo from "../../../assets/images/logo.png";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, login } from "../../../redux/actions/userAction";
 import { useAlert } from "react-alert";
+import Loader from "../../Loader/Loader";
 
 const Signin = () => {
   const navigate = useNavigate();
@@ -14,13 +15,13 @@ const Signin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const { isAuthenticated, error } = useSelector((state) => state.user);
+  const { isAuthenticated, error,loading } = useSelector((state) => state.user);
 
   const loginHandler = async (e) => {
     e.preventDefault();
     dispatch(login(email, password));
   };
-
+ 
   useEffect(() => {
     if (error) {
       alert.error(error);
@@ -28,8 +29,13 @@ const Signin = () => {
     }
     if (isAuthenticated) {
       navigate("/dashboard");
+      window.location.reload(true);
     }
   }, [dispatch, error, alert, isAuthenticated, navigate]);
+  
+  if(loading || isAuthenticated){
+    return <Loader></Loader>;
+}
 
   return (
     <div className="Signin_wrapper">

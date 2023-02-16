@@ -22,7 +22,6 @@ const Dashboard = () => {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
   const getAllBlogs = async () => {
     setLoading(true);
     try {
@@ -37,7 +36,7 @@ const Dashboard = () => {
       );
 
       setBlogList(res.data.data.blog);
-      console.log(res.data.data.blog);
+      // console.log(res.data.data.blog);
       setLoading(false);
     } catch (err) {
       console.error("something went wrong", err);

@@ -76,6 +76,7 @@ select:focus {
 	border-radius: 10px;
 	background-color: #eae609;
 	border: none;
+	cursor: pointer;
 }
 .btn-logout:hover {
 	filter: brightness(105%);
