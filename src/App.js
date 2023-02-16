@@ -22,12 +22,8 @@ function App() {
 				<Route exact path="/blog/:id" element={<NewsDetail />} />
 				<Route exact path="/blogs/:category" element={<NewsCategory />} />
 				<Route element={<ProtectedRoute />}>
-					<Route exact path="/dashboard" element={
-						<Dashboard />
-					} />
+					<Route exact path="/dashboard" element={<Dashboard />} />
 				</Route>
-
-			</Routes>
 		</div>
 	);
 }
