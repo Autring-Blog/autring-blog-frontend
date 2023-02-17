@@ -174,64 +174,99 @@ const Dashboard = () => {
     <>
 
       <div className="dashboard">
+
          <div className="left-dashboard">
+
             <button className="btn-logout" onClick={handleLogOut}>
              logout
             </button>
+
            <Formik
              initialValues={{
              chooseFile:'',
-             chooseFileTitle: '',
+             photoTitle: '',
              shortDescription: '',
              description: '',
              selectCategory:''
             }}
-            onSubmit={(values) => {
-             const onSubmit = async (e) => {
-          
-           console.log({
-           chooseFile,
-           photoTitle,
-           selectCategory,
-           shortDescription,
-           description,
-            });
+          /*------------------------------------------validation---------------------------------------------*/
+          validate={values => {
+            const errors = {};
+            if (!values.photoTitle) {
+              errors.photoTitle = 'Required';
+            } else if (
+              !/^[A-Z]+[a-z]/i.test(values.photoTitle)
+              
+            ) {
+              errors.photoTitle = 'Invalid title';
+            }
 
-            try {
-           const postBlog = await axios.post(
-           "https://api.theautring.com/api/v1/postablog",
-           {
-            chooseFile,
-            photoTitle,
-            selectCategory,
-            shortDescription,
-            description,
-           },
-           {
-            headers: {
-            "Content-Type": "multipart/form-data",
-            },
-           xhrFields: {
-            withCredentials: true,
-            },
-             withCredentials: true,
-           }
-       );
+            if (!values.shortDescription) {
+              errors.shortDescription = 'Required';
+            } else if (
+              !/^[A-Z]+[a-z]/i.test(values.shortDescription)
+              
+            ) {
+              errors.shortDescription = 'Invalid description';
+            }
 
-             const res = await postBlog;
-            reset();
-            getAllBlogs();
+            if (!values.description) {
+              errors.description = 'Required';
+            } else if (
+              !/^[A-Z]+[a-z]/i.test(values.description)
+              
+            ) {
+              errors.description = 'Invalid description';
+            }
+            console.log(errors) ;
+          }}
 
-            console.log(res.data);
-          } catch (err) {
-            console.error("error post the blog", err);
-    }
-  };
+/*---------------------------------------------submit function-----------------------*/
+
+            onSubmit={(values , { setSubmitting }) => {
+
+              setTimeout(async () => {
+                alert("are you sure ?",values);
+                setSubmitting(false);
+                try {
+                    const postBlog = await axios.post(
+                  "https://api.theautring.com/api/v1/postablog",
+                  {
+                            chooseFile,
+                            photoTitle,
+                            selectCategory,
+                            shortDescription,
+                            description,
+                           },
+                           {
+                            headers: {
+                            "Content-Type": "multipart/form-data",
+                            },
+                           xhrFields: {
+                            withCredentials: true,
+                            },
+                             withCredentials: true,
+                           }
+                       );
+                
+                             const res = await postBlog;
+                            reset();
+                            getAllBlogs();
+                
+                            console.log(res.data);
+                          } catch (err) {
+                            console.error("error post the blog", err);
+                    }
+              }, 400);
+  //         const onSubmit = async (e) => {
+
+  //         
+  // };
 
           }}
     >
          {({ isSubmitting }) => (
-           <Form onSubmit={Formik.handleSubmit}>
+           <Form >
            <Field name ="chooseFile"type="file" placeholder=" chooseFile" className="form-control" />
 
            <Field name ="selectCategory" as="select" className="form-control">
@@ -243,30 +278,24 @@ const Dashboard = () => {
 
             </Field>
 
-            <Field name ="chooseFileTitle"type="text" placeholder="chooseFile title" className="form-control"/>
+            <Field name ="photoTitle"type="text" placeholder="ChooseFile title" className="form-control"/>
 
-            <Field name="shortDescription" placeholder="shortDescription" type="text"className="form-control"/>
+            <Field name="shortDescription" placeholder="ShortDescription" type="text"className="form-control"/>
 
-            <div className="form-control">
-              <textarea
-                type="text"
-                id="description"
-                placeholder="Description"
-                rows="10"
-                cols="30"
-              ></textarea>
-            </div>
-           </Form>
-           )}
-           
-         </Formik>
+            <Field name="description" type="text" placeholder="Description" as="textarea"className="form-control" row="10" col="30"/>
             {!isEdit ? (
-              <button type ="submit" >Add</button>
+              <button type ="submit" disabled={isSubmitting}>Add</button>
             ) : (
               <button type="button" onClick={editPost}>
                 Edit
               </button>
             )}
+     
+           </Form>
+           )}
+           
+         </Formik>
+            
         </div>
         <div className="right-dashboard">
           <div className="blog-list">
