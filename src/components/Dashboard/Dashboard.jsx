@@ -52,6 +52,7 @@ const Dashboard = () => {
       );
 
       setBlogList(res.data.data.blog);
+      console.log(res.data.data.blog);
       setLoading(false);
     } catch (err) {
       console.error("something went wrong", err);
@@ -171,90 +172,115 @@ const Dashboard = () => {
 
   return (
     <>
-      <button className="btn-logout" onClick={handleLogOut}>
-        logout
-      </button>
+
       <div className="dashboard">
-        <div className="left-dashboard">
-          <form onSubmit={handleSubmit}>
-            <div className="form-control">
-              <input
-                type="file"
-                name="photo"
-                onChange={(e) => setPhoto(e.target.files[0])}
-                required
-              />
-            </div>
-            <div className="form-control">
-              <input
-                type="text"
-                id="photoTitle"
-                value={inPhotoTitle}
-                onChange={(e) => setInPhotoTitle(e.target.value)}
-                placeholder="Photo Title"
-              />
-            </div>
-            <div className="form-control">
-              {/* <input
-								type="text"
-								id="category"
-								value={category}
-								onChange={(e) => setCategory(e.target.value)}
-								placeholder="Category"
-								required
-							/> */}
-              <select
-                required
-                id="category"
-                value={category}
-                onChange={(e) => setCategory(e.target.value)}
-              >
-                <option selected disabled>
-                  Category
-                </option>
-                <option value="international">International</option>
-                <option value="national">National</option>
-                <option value="politics">Politics</option>
-                <option value="defence">Defence</option>
-                <option value="science and technology">
-                  Science and Technology
-                </option>
-                <option value="sports">Sports</option>
-                <option value="education">Education</option>
-                <option value="others">Others</option>
-              </select>
-            </div>
-            <div className="form-control">
-              <input
-                type="text"
-                id="mainHeading"
-                value={mainHeading}
-                onChange={(e) => setMainHeading(e.target.value)}
-                placeholder="Main Heading"
-                required
-              />
-            </div>
-            <div className="form-control">
-              <input
-                type="text"
-                id="shortDescription"
-                value={shortDescription}
-                onChange={(e) => setShortDescription(e.target.value)}
-                placeholder="Short Description"
-                required
-              />
-            </div>
-            <div className="form-control">
-              <textarea
-                type="text"
-                id="description"
-                value={paragraphDescription}
-                onChange={(e) => setParagraphDescription(e.target.value)}
-                placeholder="Description"
-                rows="10"
-                cols="30"
-              ></textarea>
-            </div>
+
+         <div className="left-dashboard">
+
+            <button className="btn-logout" onClick={handleLogOut}>
+             logout
+            </button>
+
+           <Formik
+             initialValues={{
+             chooseFile:'',
+             photoTitle: '',
+             shortDescription: '',
+             description: '',
+             selectCategory:''
+            }}
+          /*------------------------------------------validation---------------------------------------------*/
+          validate={values => {
+            const errors = {};
+            if (!values.photoTitle) {
+              errors.photoTitle = 'Required';
+            } else if (
+              !/^[A-Z]+[a-z]/i.test(values.photoTitle)
+              
+            ) {
+              errors.photoTitle = 'Invalid title';
+            }
+
+            if (!values.shortDescription) {
+              errors.shortDescription = 'Required';
+            } else if (
+              !/^[A-Z]+[a-z]/i.test(values.shortDescription)
+              
+            ) {
+              errors.shortDescription = 'Invalid description';
+            }
+
+            if (!values.description) {
+              errors.description = 'Required';
+            } else if (
+              !/^[A-Z]+[a-z]/i.test(values.description)
+              
+            ) {
+              errors.description = 'Invalid description';
+            }
+            console.log(errors) ;
+          }}
+
+/*---------------------------------------------submit function-----------------------*/
+
+            onSubmit={(values , { setSubmitting }) => {
+
+              setTimeout(async () => {
+                alert("are you sure ?",values);
+                setSubmitting(false);
+                try {
+                    const postBlog = await axios.post(
+                  "https://api.theautring.com/api/v1/postablog",
+                  {
+                            chooseFile,
+                            photoTitle,
+                            selectCategory,
+                            shortDescription,
+                            description,
+                           },
+                           {
+                            headers: {
+                            "Content-Type": "multipart/form-data",
+                            },
+                           xhrFields: {
+                            withCredentials: true,
+                            },
+                             withCredentials: true,
+                           }
+                       );
+                
+                             const res = await postBlog;
+                            reset();
+                            getAllBlogs();
+                
+                            console.log(res.data);
+                          } catch (err) {
+                            console.error("error post the blog", err);
+                    }
+              }, 400);
+  //         const onSubmit = async (e) => {
+
+  //         
+  // };
+
+          }}
+    >
+         {({ isSubmitting }) => (
+           <Form >
+           <Field name ="chooseFile"type="file" placeholder=" chooseFile" className="form-control" />
+
+           <Field name ="selectCategory" as="select" className="form-control">
+            <option value="">Select category</option>
+
+            {options.map(option=>(
+              <option key={option.value} value={option.value}>{option.label}</option>
+            ))}
+
+            </Field>
+
+            <Field name ="photoTitle"type="text" placeholder="ChooseFile title" className="form-control"/>
+
+            <Field name="shortDescription" placeholder="ShortDescription" type="text"className="form-control"/>
 
             <Field name="description" type="text" placeholder="Description" as="textarea"className="form-control" row="10" col="30"/>
             {!isEdit ? (
