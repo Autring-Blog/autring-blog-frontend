@@ -28,7 +28,7 @@ const Signin = () => {
     }
     if (isAuthenticated) {
       navigate("/dashboard");
-    window.location.reload(true);
+      window.location.reload(true);
     }
   }, [dispatch, error, alert, isAuthenticated, navigate]);
 
@@ -56,7 +56,6 @@ const Signin = () => {
               required={true}
               onChange={(e) => setPassword(e.target.value)}
             />
-            <div className="for_pass">{/* <span>Forgot Password</span> */}</div>
           </div>
           <div className="signin_button">
             <button className="custom_button" type="submit">
@@ -70,13 +69,6 @@ const Signin = () => {
             Don't Have An Account?
           </span>
           <span onClick={() => navigate("/signup")}>Sign Up</span>
-          {/* <span>Or Continue With</span> */}
-
-          <div className="foot_icons">
-            {/* <a href="https://infinite-cove-18126.herokuapp.com/auth/google" >
-              {/* <img src="https://img.icons8.com/color/48/000000/google-logo.png" alt='icons' />
-            /a> */}
-          </div>
         </div>
       </div>
     </div>

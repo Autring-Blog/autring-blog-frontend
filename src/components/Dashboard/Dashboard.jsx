@@ -225,14 +225,6 @@ const Dashboard = () => {
               />
             </div>
             <div className="form-control">
-              {/* <input
-								type="text"
-								id="category"
-								value={category}
-								onChange={(e) => setCategory(e.target.value)}
-								placeholder="Category"
-								required
-							/> */}
               <select
                 required
                 id="category"
