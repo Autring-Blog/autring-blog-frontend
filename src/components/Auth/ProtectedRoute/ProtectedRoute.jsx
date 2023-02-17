@@ -1,24 +1,13 @@
-import React from 'react';
-import { Navigate, Outlet } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { Navigate, Outlet, useLocation } from "react-router-dom";
 
 const ProtectedRoute = () => {
-  const { loading, isAuthenticated } = useSelector((state) => state.user);
-  // if (loading === false && !isAuthenticated) {
-  //     return <Navigate to="/signin" />
-  // }
+  const location = useLocation();
+  const user = JSON.parse(localStorage.getItem("user"));
 
-  const user = JSON.parse(localStorage.getItem('user'));
-  console.log(isAuthenticated);
-
-  if (!isAuthenticated) {
-    return <Navigate to='/signin' />;
+  if (!user) {
+    return <Navigate to="/signin" state={{ from: location }} />;
   }
-
-  if (user && user.role === 'admin') {
-    return <Navigate to='/dashboard' />;
-  }
-  return loading === false && <Outlet />;
+  return <Outlet />;
 };
 
 export default ProtectedRoute;
