@@ -3,41 +3,80 @@ import axios from "axios";
 import BlogCard from "./card/BlogCard";
 import { logOut } from "../../redux/actions/userAction";
 import { useDispatch } from "react-redux";
-import{Formik ,Field,Form} from 'formik';
+import {  useFormik } from "formik";
+import { Form_custom } from "./Form_custom";
+
 
 import "./Dashboard.css";
 import Loader from "../Loader/Loader";
 import { useNavigate } from "react-router-dom";
 
+
+const onSubmit = async(values, actions)=>{
+  console.log(values );
+  
+
+  try {
+    const postBlog = await axios.post(
+      "https://api.theautring.com/api/v1/postablog",
+      {
+        File,
+      } = values,
+      {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+        xhrFields: {
+          withCredentials: true,
+        },
+        withCredentials: true,
+      }
+    );
+
+    const res = await postBlog;
+    // reset();
+    // getAllBlogs();
+
+    console.log(res.data);
+  } catch (err) {
+    console.error("error post the blog", err);
+  }
+};
+
+
 const Dashboard = () => {
   const [loading, setLoading] = useState(false);
   const [blogList, setBlogList] = useState([]);
-  const [chooseFile, setchooseFile] = useState(null);
-  const [selectCategory, setselectCategory] = useState("");
-  const [shortDescription, setshortDescription] = useState("");
-  const [description, setdescription] = useState("");
-  const [photoTitle, setphotoTitle] = useState("");
+
   const [isEdit, setIsEdit] = useState(false);
   const [itemId, setItemId] = useState("");
-
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const options = [
-    { value: 'international', label: 'International' },
-    { value: 'national', label: 'National' },
-    { value: 'politics', label: 'Politics' },
-    { value:'defence',    label:'Defence'},
-    { value:'science and technology',label:'Science and Technology'},
-    { value:'sports',     label:'Sports'},
-    { value:'education',  label:'Education'},
-    { value:'others',     label:'Others'},
-  ];
-  
+  const{
+    values,
+    errors,
+    
+    handleBlur,
+    handleChange,
+    handleSubmit,
 
-  
+  } = useFormik({
+    initialValues:{
+      File:'',
+      inphotoTitle:'',
+      Category:'',
+      Main_Heading:'',
+      description:'',
+    },
+    validationSchema:Form_custom,
+    onSubmit,
 
+  });
+ 
+
+ 
   const getAllBlogs = async () => {
     setLoading(true);
     try {
@@ -62,15 +101,10 @@ const Dashboard = () => {
     getAllBlogs();
     setIsEdit(false);
   }, []);
-  
 
   const reset = () => {
-    setchooseFile(null);
-    setselectCategory("");
-
+    values = ""
   };
-
- 
 
   const deletePost = async (id) => {
     const confirm = window.confirm("Are you sure ?");
@@ -96,10 +130,10 @@ const Dashboard = () => {
     const editPost = blogList.filter((item) => id === item._id);
     const {
       _id,
-      selectCategory,
-      chooseFile,
-      photoTitle,
-      shortDescription,
+      Category,
+      File,
+      inphotoTitle,
+      Main_Heading,
       description,
     } = editPost[0];
     setIsEdit(true);
@@ -109,16 +143,15 @@ const Dashboard = () => {
     console.log(editPost[0]);
     reset();
     const formData = new FormData();
-    formData.append("chooseFile", chooseFile);
+    formData.append("File",File);
+    formData.append("description", description);
+    formData.append("Category", Category);
+    formData.append("inphotoTitle", inphotoTitle);
+    formData.append("Main_Heading", Main_Heading);
     console.log(formData);
 
-    setchooseFile(chooseFile);
-    setphotoTitle(photoTitle);
-    setselectCategory(selectCategory);
-     setshortDescription(shortDescription);
-    setdescription(description);
+
     return editPost[0];
-    
   };
 
   const editPost = async () => {
@@ -128,11 +161,7 @@ const Dashboard = () => {
       const updateBlog = await axios.patch(
         `https://api.theautring.com/api/v1/updateblog/${id}`,
         {
-          selectCategory,
-           photoTitle,
-           chooseFile,
-          shortDescription,
-          description,
+         values
         },
         {
           xhrFields: {
@@ -141,9 +170,9 @@ const Dashboard = () => {
           withCredentials: true,
         }
       );
-      const updatechooseFile = await axios.patch(
+      const updateFile = await axios.patch(
         `https://api.theautring.com/api/v1/updateblogchooseFile/${id}`,
-        { chooseFile },
+        { values },
         {
           headers: {
             "Content-Type": "multipart/form-data",
@@ -155,12 +184,12 @@ const Dashboard = () => {
         }
       );
       const res = await updateBlog;
-      const changechooseFile = await updatechooseFile;
+      const changeFile = await updateFile;
       getAllBlogs();
-      reset();
+      // reset();
       setIsEdit(false);
       console.log(res);
-      console.log(changechooseFile);
+      console.log(changeFile);
     } catch (error) {
       console.error("Something went wrong", error);
     }
@@ -169,133 +198,92 @@ const Dashboard = () => {
     dispatch(logOut);
     navigate("/signin");
   };
+ 
+   
 
   return (
     <>
-
       <div className="dashboard">
-
-         <div className="left-dashboard">
-
-            <button className="btn-logout" onClick={handleLogOut}>
-             logout
-            </button>
-
-           <Formik
-             initialValues={{
-             chooseFile:'',
-             photoTitle: '',
-             shortDescription: '',
-             description: '',
-             selectCategory:''
-            }}
-          /*------------------------------------------validation---------------------------------------------*/
-          validate={values => {
-            const errors = {};
-            if (!values.photoTitle) {
-              errors.photoTitle = 'Required';
-            } else if (
-              !/^[A-Z]+[a-z]/i.test(values.photoTitle)
-              
-            ) {
-              errors.photoTitle = 'Invalid title';
-            }
-
-            if (!values.shortDescription) {
-              errors.shortDescription = 'Required';
-            } else if (
-              !/^[A-Z]+[a-z]/i.test(values.shortDescription)
-              
-            ) {
-              errors.shortDescription = 'Invalid description';
-            }
-
-            if (!values.description) {
-              errors.description = 'Required';
-            } else if (
-              !/^[A-Z]+[a-z]/i.test(values.description)
-              
-            ) {
-              errors.description = 'Invalid description';
-            }
-            console.log(errors) ;
-          }}
-
-/*---------------------------------------------submit function-----------------------*/
-
-            onSubmit={(values , { setSubmitting }) => {
-
-              setTimeout(async () => {
-                alert("are you sure ?",values);
-                setSubmitting(false);
-                try {
-                    const postBlog = await axios.post(
-                  "https://api.theautring.com/api/v1/postablog",
-                  {
-                            chooseFile,
-                            photoTitle,
-                            selectCategory,
-                            shortDescription,
-                            description,
-                           },
-                           {
-                            headers: {
-                            "Content-Type": "multipart/form-data",
-                            },
-                           xhrFields: {
-                            withCredentials: true,
-                            },
-                             withCredentials: true,
-                           }
-                       );
-                
-                             const res = await postBlog;
-                            reset();
-                            getAllBlogs();
-                
-                            console.log(res.data);
-                          } catch (err) {
-                            console.error("error post the blog", err);
-                    }
-              }, 400);
-  //         const onSubmit = async (e) => {
-
-  //         
-  // };
-
-          }}
-    >
-         {({ isSubmitting }) => (
-           <Form >
-           <Field name ="chooseFile"type="file" placeholder=" chooseFile" className="form-control" />
-
-           <Field name ="selectCategory" as="select" className="form-control">
-            <option value="">Select category</option>
-
-            {options.map(option=>(
-              <option key={option.value} value={option.value}>{option.label}</option>
-            ))}
-
-            </Field>
-
-            <Field name ="photoTitle"type="text" placeholder="ChooseFile title" className="form-control"/>
-
-            <Field name="shortDescription" placeholder="ShortDescription" type="text"className="form-control"/>
-
-            <Field name="description" type="text" placeholder="Description" as="textarea"className="form-control" row="10" col="30"/>
-            {!isEdit ? (
-              <button type ="submit" disabled={isSubmitting}>Add</button>
-            ) : (
-              <button type="button" onClick={editPost}>
-                Edit
-              </button>
-            )}
+        <div className="left-dashboard">
+          <button className="btn-logout" onClick={handleLogOut}>
+            logout
+          </button>
+    <form onSubmit={handleSubmit} autoComplete="off">
+         
+     <input
+      className="form-control"
+      id="File"
+        value={values.File}
+        onChange={handleChange}
+       
+        type="file"
+        placeholder="Choose Your File"
+       
+      />
      
-           </Form>
-           )}
-           
-         </Formik>
-            
+    
+      <input
+      className="form-control"
+        id="inphotoTitle"
+        type="text"
+        placeholder="Photo Title"
+        value={values.inphotoTitle}
+        onChange={handleChange}
+       
+        
+      />
+      {errors.photoTitle && <p className="error">{errors.photoTitle}</p>}
+   
+          <select
+          className="form-control"
+            id="Category"
+            onChange={handleChange}
+            placeholder="Please choose Category"
+            value={values.Category}
+          >
+            <option value="select">Select Category</option>
+            <option value="international">International</option>
+            <option value="national">National</option>
+            <option value="politics">Politics</option>
+            <option value="defence">Defence</option>
+            <option value="sports">Sports</option>
+            <option value="education">Education</option>
+            <option value="science and technology">Science and Technology</option>
+            <option value="other">Other</option>
+          </select>
+     
+      <input
+      className="form-control"
+        id="Main_Heading"
+        type="text"
+        placeholder="Main Heading"
+        value={values.Main_Heading}
+        onChange={handleChange}
+        onBlur={handleBlur}
+      />    
+        <div className="form-control">
+        <textarea         
+        id="description"
+        type="textarea"
+        placeholder="Description"
+        value={values.description}
+        onChange={handleChange}
+        onBlur={handleBlur}
+        rows ="10"
+        cols = "30">
+        </textarea>
+        </div>
+            {!isEdit ? (
+                  <button type="submit" onClick={onSubmit}>
+                    Add
+                  </button>
+                ) : (
+                  <button type="button" onClick={editPost}>
+                    Edit
+                  </button>
+                )}
+          </form>   
+   
         </div>
         <div className="right-dashboard">
           <div className="blog-list">
