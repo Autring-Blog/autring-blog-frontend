@@ -4,7 +4,7 @@ import BlogCard from "./card/BlogCard";
 import { logOut } from "../../redux/actions/userAction";
 import { useDispatch } from "react-redux";
 import {  useFormik } from "formik";
-import { Form_custom } from "./Form_custom";
+import { Form_validation} from "./Form_validation";
 
 
 import "./Dashboard.css";
@@ -70,7 +70,7 @@ const Dashboard = () => {
       Main_Heading:'',
       description:'',
     },
-    validationSchema:Form_custom,
+    validationSchema:Form_validation,
     onSubmit,
 
   });
@@ -229,10 +229,11 @@ const Dashboard = () => {
         placeholder="Photo Title"
         value={values.inphotoTitle}
         onChange={handleChange}
+        onBlur={handleBlur}
        
         
       />
-      {errors.photoTitle && <p className="error">{errors.photoTitle}</p>}
+      {errors.inphotoTitle && <p className="error">{errors.inphotoTitle}</p>}
    
           <select
           className="form-control"
@@ -240,6 +241,7 @@ const Dashboard = () => {
             onChange={handleChange}
             placeholder="Please choose Category"
             value={values.Category}
+            onBlur={handleBlur}
           >
             <option value="select">Select Category</option>
             <option value="international">International</option>
@@ -261,6 +263,8 @@ const Dashboard = () => {
         onChange={handleChange}
         onBlur={handleBlur}
       />    
+       {errors.Main_Heading && <p className="error">{errors.Main_Heading}</p>}
+
         <div className="form-control">
         <textarea         
         id="description"
