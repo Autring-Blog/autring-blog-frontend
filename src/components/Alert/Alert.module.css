@@ -1,0 +1,66 @@
+:root {
+    --white-color: 255, 255, 255;
+    --black-color: 0, 0, 0;
+    --red-color: 241, 92, 109;
+}
+
+.content {
+    position: absolute;
+    top: 4rem;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 1rem;
+    max-width: 80vw;
+    overflow: hidden;
+    border-radius: 0.5rem;
+    background-color: rgba(var(--red-color), 0.75);
+    box-shadow: 0 1px 10px 0 rgba(var(--black-color), 0.25);
+    color: rgb(var(--white-color));
+    z-index: 10;
+    opacity: 0;
+    display: block;
+    animation: disappearAlert forwards 5.3s ease;
+}
+
+@keyframes disappearAlert {
+    0% {
+        opacity: 1;
+    }
+
+    95% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        display: none;
+    }
+}
+
+.content::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 6px;
+    z-index: 2;
+    background-color: rgba(var(--white-color), 0.5);
+    animation: animateBar forwards 5s ease-in;
+}
+
+@keyframes animateBar {
+    0% {
+        width: 0;
+    }
+
+    100% {
+        width: 100%;
+    }
+}
+
+.title {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}

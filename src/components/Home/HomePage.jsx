@@ -8,10 +8,12 @@ import News from "../Home/News/News";
 import NewsLetter from "./NewsLetter/NewsLetter";
 import Carousel from "./Carousel/Carousel";
 import axios from "axios";
+import Alert from "../Alert/Alert";
 const url = "https://api.theautring.com";
 const HomePage = () => {
   const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
   const getAllBlogs = async () => {
     setLoading(true);
     try {
@@ -21,6 +23,7 @@ const HomePage = () => {
     } catch (error) {
       console.log(error);
       setLoading(false);
+      setError(error.message);
     }
   };
 
@@ -32,7 +35,7 @@ const HomePage = () => {
     <>
       <Navbar />
       <hr />
-
+      {!!error.length && <Alert title={error} />}
       {blogs.length < 1 ? (
         <h1 style={{ textAlign: "center" }}>no blogs yet</h1>
       ) : (
