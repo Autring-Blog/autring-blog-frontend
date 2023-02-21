@@ -7,6 +7,7 @@ import { useDispatch } from "react-redux";
 import "./Dashboard.css";
 import Loader from "../Loader/Loader";
 import { useNavigate } from "react-router-dom";
+import Alert from "../Alert/Alert";
 
 const Dashboard = () => {
   const [loading, setLoading] = useState(false);
@@ -19,6 +20,7 @@ const Dashboard = () => {
   const [paragraphDescription, setParagraphDescription] = useState("");
   const [isEdit, setIsEdit] = useState(false);
   const [itemId, setItemId] = useState("");
+  const [error, setError] = useState("");
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -40,6 +42,7 @@ const Dashboard = () => {
       setLoading(false);
     } catch (err) {
       console.error("something went wrong", err);
+      setError(err.message);
     }
   };
   useEffect(() => {
@@ -96,6 +99,7 @@ const Dashboard = () => {
       console.log(res.data);
     } catch (err) {
       console.error("error post the blog", err);
+      setError(err.message);
     }
   };
 
@@ -115,6 +119,7 @@ const Dashboard = () => {
         getAllBlogs();
       } catch (error) {
         console.error("Something was wrong", error);
+        setError(error.message);
       }
     }
   };
@@ -192,6 +197,7 @@ const Dashboard = () => {
       console.log(changePhoto);
     } catch (error) {
       console.error("Something went wrong", error);
+      setError(error.message);
     }
   };
   const handleLogOut = () => {
@@ -204,6 +210,7 @@ const Dashboard = () => {
       <button className="btn-logout" onClick={handleLogOut}>
         logout
       </button>
+      {!!error.length && <Alert title={error} />}
       <div className="dashboard">
         <div className="left-dashboard">
           <form onSubmit={handleSubmit}>
