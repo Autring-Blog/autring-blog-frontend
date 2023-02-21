@@ -14,7 +14,7 @@ const Dashboard = () => {
   const [blogList, setBlogList] = useState([]);
   const [photo, setPhoto] = useState(null);
   const [inPhotoTitle, setInPhotoTitle] = useState("");
-  const [category, setCategory] = useState("category");
+  const [category, setCategory] = useState("");
   const [mainHeading, setMainHeading] = useState("");
   const [shortDescription, setShortDescription] = useState("");
   const [paragraphDescription, setParagraphDescription] = useState("");
@@ -238,7 +238,9 @@ const Dashboard = () => {
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
               >
-                <option value="category">Category</option>
+                <option selected disabled>
+                  Category
+                </option>
                 <option value="international">International</option>
                 <option value="national">National</option>
                 <option value="politics">Politics</option>
