@@ -9,11 +9,15 @@ import NewsLetter from "./NewsLetter/NewsLetter";
 import Carousel from "./Carousel/Carousel";
 import axios from "axios";
 import Alert from "../Alert/Alert";
-const url = "https://api.theautring.com";
+
 const HomePage = () => {
+  const url = "https://api.theautring.com";
   const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  useEffect(() => {
+    if (error.length) setTimeout(() => setError(""), 3000);
+  }, [error]);
   const getAllBlogs = async () => {
     setLoading(true);
     try {
@@ -23,7 +27,7 @@ const HomePage = () => {
     } catch (error) {
       console.log(error);
       setLoading(false);
-      setError(error.message);
+      setError(error?.response?.data?.message);
     }
   };
 

@@ -100,9 +100,9 @@ const Dashboard = () => {
       getAllBlogs();
 
       console.log(res.data);
-    } catch (err) {
-      console.error("error post the blog", err);
-      setError(err?.response?.data?.message);
+    } catch (error) {
+      console.error("error post the blog", error);
+      setError(error?.response?.data?.message);
     }
   };
 
@@ -122,7 +122,7 @@ const Dashboard = () => {
         getAllBlogs();
       } catch (error) {
         console.error("Something was wrong", error);
-        setError(error.message);
+        setError(error?.response?.data?.message);
       }
     }
   };
@@ -200,7 +200,7 @@ const Dashboard = () => {
       console.log(changePhoto);
     } catch (error) {
       console.error("Something went wrong", error);
-      setError(error.message);
+      setError(error?.response?.data?.message);
     }
   };
   const handleLogOut = () => {
