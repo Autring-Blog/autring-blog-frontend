@@ -14,7 +14,7 @@ const Dashboard = () => {
   const [blogList, setBlogList] = useState([]);
   const [photo, setPhoto] = useState(null);
   const [inPhotoTitle, setInPhotoTitle] = useState("");
-  const [category, setCategory] = useState("");
+  const [category, setCategory] = useState("category");
   const [mainHeading, setMainHeading] = useState("");
   const [shortDescription, setShortDescription] = useState("");
   const [paragraphDescription, setParagraphDescription] = useState("");
@@ -49,6 +49,9 @@ const Dashboard = () => {
     getAllBlogs();
     setIsEdit(false);
   }, []);
+  useEffect(() => {
+    if (error.length) setTimeout(() => setError(""), 3000);
+  }, [error]);
 
   const reset = () => {
     setPhoto(null);
@@ -99,7 +102,7 @@ const Dashboard = () => {
       console.log(res.data);
     } catch (err) {
       console.error("error post the blog", err);
-      setError(err.message);
+      setError(err?.response?.data?.message);
     }
   };
 
@@ -238,7 +241,7 @@ const Dashboard = () => {
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
               >
-                <option selected disabled>
+                <option value="category" disabled>
                   Category
                 </option>
                 <option value="international">International</option>
