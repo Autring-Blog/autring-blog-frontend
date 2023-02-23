@@ -8,6 +8,7 @@ import {
   REGISTER_REQUEST,
   REGISTER_SUCCESS,
 } from "../constants/userConstant";
+
 const URL = "https://api.theautring.com/api/v1";
 
 // const deleteAllCookies = () => {
@@ -64,6 +65,7 @@ export const register = (userData) => async (dispatch) => {
 //   localStorage.clear();
 //   deleteAllCookies()
 // };
+
 export const logOut = async () => {
   // localStorage.clear();
   // deleteAllCookies();
@@ -71,6 +73,7 @@ export const logOut = async () => {
     console.log(error);
   });
   window.location.reload(true);
+  window.location.replace("http://www.theautring.com");
 };
 
 // // Load User
