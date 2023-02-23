@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from "axios";
 import {
   CLEAR_ERRORS,
   LOGIN_FAIL,
@@ -7,8 +7,8 @@ import {
   REGISTER_FAIL,
   REGISTER_REQUEST,
   REGISTER_SUCCESS,
-} from '../constants/userConstant';
-const URL = 'https://api.theautring.com/api/v1';
+} from "../constants/userConstant";
+const URL = "https://api.theautring.com/api/v1";
 
 const deleteAllCookies = () => {
   const cookies = document.cookie.split(";");
@@ -19,7 +19,7 @@ const deleteAllCookies = () => {
     const name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
     document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
   }
-}
+};
 
 export const login = (email, password) => async (dispatch) => {
   try {
@@ -37,9 +37,9 @@ export const login = (email, password) => async (dispatch) => {
     );
     console.log(data);
 
-    localStorage.setItem('token', data.token);
-    localStorage.setItem('user', JSON.stringify(data.user));
-    localStorage.setItem('loggedIn', true);
+    localStorage.setItem("token", data.token);
+    localStorage.setItem("user", JSON.stringify(data.user));
+    localStorage.setItem("loggedIn", true);
 
     dispatch({ type: LOGIN_SUCCESS, payload: data.user });
   } catch (error) {
@@ -61,10 +61,10 @@ export const register = (userData) => async (dispatch) => {
   }
 };
 
-export const logOut = () => {
-  localStorage.clear();
-  deleteAllCookies()
-};
+// export const logOut = () => {
+//   localStorage.clear();
+//   deleteAllCookies()
+// };
 
 // // Load User
 // export const loadUser = () => async (dispatch) => {
