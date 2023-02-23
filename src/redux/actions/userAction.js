@@ -65,6 +65,13 @@ export const register = (userData) => async (dispatch) => {
 //   localStorage.clear();
 //   deleteAllCookies()
 // };
+export const logOut = async () => {
+  // localStorage.clear();
+  // deleteAllCookies();
+  await axios.get("https://api.theautring.com/auth/logout").catch((error) => {
+    console.log(error);
+  });
+};
 
 // // Load User
 // export const loadUser = () => async (dispatch) => {

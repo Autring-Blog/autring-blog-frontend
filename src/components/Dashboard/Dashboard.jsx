@@ -7,18 +7,20 @@ import { useDispatch } from "react-redux";
 import "./Dashboard.css";
 import Loader from "../Loader/Loader";
 import { useNavigate } from "react-router-dom";
+import Alert from "../Alert/Alert";
 
 const Dashboard = () => {
   const [loading, setLoading] = useState(false);
   const [blogList, setBlogList] = useState([]);
   const [photo, setPhoto] = useState(null);
   const [inPhotoTitle, setInPhotoTitle] = useState("");
-  const [category, setCategory] = useState("");
+  const [category, setCategory] = useState("category");
   const [mainHeading, setMainHeading] = useState("");
   const [shortDescription, setShortDescription] = useState("");
   const [paragraphDescription, setParagraphDescription] = useState("");
   const [isEdit, setIsEdit] = useState(false);
   const [itemId, setItemId] = useState("");
+  const [error, setError] = useState("");
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -40,12 +42,16 @@ const Dashboard = () => {
       setLoading(false);
     } catch (err) {
       console.error("something went wrong", err);
+      setError(err.message);
     }
   };
   useEffect(() => {
     getAllBlogs();
     setIsEdit(false);
   }, []);
+  useEffect(() => {
+    if (error.length) setTimeout(() => setError(""), 3000);
+  }, [error]);
 
   const reset = () => {
     setPhoto(null);
@@ -94,8 +100,9 @@ const Dashboard = () => {
       getAllBlogs();
 
       console.log(res.data);
-    } catch (err) {
-      console.error("error post the blog", err);
+    } catch (error) {
+      console.error("error post the blog", error);
+      setError(error?.response?.data?.message);
     }
   };
 
@@ -115,6 +122,7 @@ const Dashboard = () => {
         getAllBlogs();
       } catch (error) {
         console.error("Something was wrong", error);
+        setError(error?.response?.data?.message);
       }
     }
   };
@@ -192,6 +200,7 @@ const Dashboard = () => {
       console.log(changePhoto);
     } catch (error) {
       console.error("Something went wrong", error);
+      setError(error?.response?.data?.message);
     }
   };
   const handleLogOut = () => {
@@ -204,6 +213,7 @@ const Dashboard = () => {
       <button className="btn-logout" onClick={handleLogOut}>
         logout
       </button>
+      {!!error.length && <Alert title={error} />}
       <div className="dashboard">
         <div className="left-dashboard">
           <form onSubmit={handleSubmit}>
@@ -231,7 +241,7 @@ const Dashboard = () => {
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
               >
-                <option selected disabled>
+                <option value="category" disabled>
                   Category
                 </option>
                 <option value="international">International</option>
