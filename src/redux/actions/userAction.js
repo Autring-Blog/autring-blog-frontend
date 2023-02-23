@@ -70,6 +70,7 @@ export const logOut = async () => {
   await axios.get("https://api.theautring.com/api/v1/logout").catch((error) => {
     console.log(error);
   });
+  window.location.reload(true);
 };
 
 // // Load User
