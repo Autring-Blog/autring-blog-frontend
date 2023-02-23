@@ -67,7 +67,7 @@ export const register = (userData) => async (dispatch) => {
 export const logOut = async () => {
   // localStorage.clear();
   // deleteAllCookies();
-  await axios.get("https://api.theautring.com/auth/logout").catch((error) => {
+  await axios.get("https://api.theautring.com/api/v1/logout").catch((error) => {
     console.log(error);
   });
 };
