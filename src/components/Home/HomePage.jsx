@@ -39,8 +39,8 @@ const HomePage = () => {
     <>
       <Navbar />
       <hr />
-      {!!error.length && <Alert title={error} />}
-      {blogs.length < 1 ? (
+      {!!error?.length && <Alert title={error} />}
+      {blogs?.length < 1 ? (
         <h1 style={{ textAlign: "center" }}>no blogs yet</h1>
       ) : (
         <div>
@@ -50,7 +50,6 @@ const HomePage = () => {
           {!loading && <News blogs={blogs} />}
         </div>
       )}
-
       <NewsLetter />
       <Footer />
     </>
