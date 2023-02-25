@@ -94,7 +94,7 @@ const Dashboard = () => {
           // withCredentials: true,
         }
       );
-
+      console.log("hello");
       const res = await postBlog;
       reset();
       getAllBlogs();
@@ -112,12 +112,7 @@ const Dashboard = () => {
       try {
         await axios.delete(
           `https://api.theautring.com/api/v1/deleteblog/${id}`,
-          // {
-          //   xhrFields: {
-          //     withCredentials: true,
-          //   },
-          //   withCredentials: true,
-          // }
+
           {
             headers: {
               Authorization: `Bearer ${Token}`,
