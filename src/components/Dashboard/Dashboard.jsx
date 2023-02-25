@@ -24,7 +24,7 @@ const Dashboard = () => {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
+  const Token = localStorage.getItem("token");
   const getAllBlogs = async () => {
     setLoading(true);
     try {
@@ -87,6 +87,7 @@ const Dashboard = () => {
         {
           headers: {
             "Content-Type": "multipart/form-data",
+            Authorization: `Bearer ${Token}`,
           },
           // xhrFields: {
           //   withCredentials: true,
@@ -157,7 +158,6 @@ const Dashboard = () => {
     setParagraphDescription(paragraphDescription);
     return editPost[0];
   };
-  const Token = localStorage.getItem("token");
 
   const editPost = async () => {
     const id = itemId;
