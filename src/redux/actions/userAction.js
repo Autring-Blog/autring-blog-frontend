@@ -70,8 +70,7 @@ export const logOut = async () => {
   localStorage.clear();
   // deleteAllCookies();
 
-  window.location.reload(true);
-  // window.location.replace("http://www.theautring.com");
+  window.location.replace("http://www.theautring.com");
 };
 
 // // Load User
