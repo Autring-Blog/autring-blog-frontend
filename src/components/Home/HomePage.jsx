@@ -16,7 +16,7 @@ const HomePage = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   useEffect(() => {
-    if (error.length) setTimeout(() => setError(""), 3000);
+    if (error) setTimeout(() => setError(""), 3000);
   }, [error]);
   const getAllBlogs = async () => {
     setLoading(true);
