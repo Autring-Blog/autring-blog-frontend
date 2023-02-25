@@ -67,7 +67,7 @@ const NewsDetail = () => {
             </div>
           </div>
           <div className="hero-image">
-            <img src={blog.photo[0]} alt="img" />
+            <img src={blog.photo} alt="img" />
           </div>
           <div className="hero-content">
             <h2>{blog && blog.mainHeading}</h2>
