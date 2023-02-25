@@ -29,13 +29,13 @@ const Dashboard = () => {
     setLoading(true);
     try {
       const res = await axios.get(
-        "https://api.theautring.com/api/v1/getallblog",
-        {
-          xhrFields: {
-            withCredentials: true,
-          },
-          withCredentials: true,
-        }
+        "https://api.theautring.com/api/v1/getallblog"
+        // {
+        //   xhrFields: {
+        //     withCredentials: true,
+        //   },
+        //   withCredentials: true,
+        // }
       );
 
       setBlogList(res.data.data.blog);
@@ -88,10 +88,10 @@ const Dashboard = () => {
           headers: {
             "Content-Type": "multipart/form-data",
           },
-          xhrFields: {
-            withCredentials: true,
-          },
-          withCredentials: true,
+          // xhrFields: {
+          //   withCredentials: true,
+          // },
+          // withCredentials: true,
         }
       );
 
@@ -112,11 +112,16 @@ const Dashboard = () => {
       try {
         await axios.delete(
           `https://api.theautring.com/api/v1/deleteblog/${id}`,
+          // {
+          //   xhrFields: {
+          //     withCredentials: true,
+          //   },
+          //   withCredentials: true,
+          // }
           {
-            xhrFields: {
-              withCredentials: true,
+            headers: {
+              Authorization: `Bearer ${Token}`,
             },
-            withCredentials: true,
           }
         );
         getAllBlogs();
@@ -157,13 +162,17 @@ const Dashboard = () => {
     setParagraphDescription(paragraphDescription);
     return editPost[0];
   };
+  const Token = localStorage.getItem("token");
 
   const editPost = async () => {
     const id = itemId;
-
+    const config = {
+      headers: { Authorization: `Bearer ${Token}` },
+    };
     try {
       const updateBlog = await axios.patch(
         `https://api.theautring.com/api/v1/updateblog/${id}`,
+
         {
           category,
           inPhotoTitle,
@@ -171,11 +180,11 @@ const Dashboard = () => {
           shortDescription,
           paragraphDescription,
         },
+
         {
-          xhrFields: {
-            withCredentials: true,
+          headers: {
+            Authorization: `Bearer ${Token}`,
           },
-          withCredentials: true,
         }
       );
       const updatePhoto = await axios.patch(
@@ -184,11 +193,12 @@ const Dashboard = () => {
         {
           headers: {
             "Content-Type": "multipart/form-data",
+            Authorization: `Bearer ${Token}`,
           },
-          xhrFields: {
-            withCredentials: true,
-          },
-          withCredentials: true,
+          // xhrFields: {
+          //   withCredentials: true,
+          // },
+          // withCredentials: true,
         }
       );
       const res = await updateBlog;

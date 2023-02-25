@@ -27,13 +27,13 @@ export const login = (email, password) => async (dispatch) => {
 
     const { data } = await axios.post(
       `${URL}/login`,
-      { email, password },
-      {
-        xhrFields: {
-          withCredentials: true,
-        },
-        withCredentials: true,
-      }
+      { email, password }
+      // {
+      //   xhrFields: {
+      //     withCredentials: true,
+      //   },
+      //   withCredentials: true,
+      // }
     );
     console.log(data);
 
@@ -67,13 +67,11 @@ export const register = (userData) => async (dispatch) => {
 // };
 
 export const logOut = async () => {
-  // localStorage.clear();
+  localStorage.clear();
   // deleteAllCookies();
-  await axios.get("https://api.theautring.com/api/v1/logout").catch((error) => {
-    console.log(error);
-  });
+
   window.location.reload(true);
-  window.location.replace("http://www.theautring.com");
+  // window.location.replace("http://www.theautring.com");
 };
 
 // // Load User
