@@ -68,9 +68,6 @@ export const register = (userData) => async (dispatch) => {
 
 export const logOut = async () => {
   localStorage.clear();
-  // deleteAllCookies();
-
-  //window.location.replace("http://www.theautring.com");
 };
 
 // // Load User
