@@ -48,7 +48,7 @@ const Banner = (props) => {
         </p>
         <button
           className="carousel__container--left--btn"
-          onClick={() => navigate(`blog/${props.item._id}`)}
+          onClick={() => navigate(`/blog/${props.item._id}`)}
         >
           read more
         </button>
