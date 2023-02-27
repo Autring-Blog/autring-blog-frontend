@@ -9,6 +9,7 @@ import NewsLetter from "./NewsLetter/NewsLetter";
 import Carousel from "./Carousel/Carousel";
 import axios from "axios";
 import Alert from "../Alert/Alert";
+import Loader from "../Loader/Loader";
 
 const HomePage = () => {
   const url = "https://api.theautring.com";
@@ -41,7 +42,9 @@ const HomePage = () => {
       <hr />
       {!!error?.length && <Alert title={error} />}
       {blogs?.length < 1 ? (
-        <h1 style={{ textAlign: "center" }}>no blogs yet</h1>
+        <div style={{ minHeight: "80vh" }}>
+          <Loader />
+        </div>
       ) : (
         <div>
           {!loading && <Carousel blogs={blogs} />}
