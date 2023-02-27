@@ -8,11 +8,15 @@ import Trending from "../Home/Trending/Trending";
 import News from "../Home/News/News";
 import axios from "axios";
 import "../Home/HomePage.css";
+import Loader from "../Loader/Loader";
+import NewsLetter from "../Home/NewsLetter/NewsLetter";
+import Alert from "../Alert/Alert";
 
 const url = "https://api.theautring.com/api/v1";
 
 const NewsCategory = () => {
   const { category } = useParams();
+  const [error, setError] = useState("");
 
   const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -30,6 +34,7 @@ const NewsCategory = () => {
       setLoading(false);
     } catch (error) {
       console.log(error);
+      setError(error?.response?.data?.message);
       setLoading(false);
     }
   };
@@ -37,13 +42,19 @@ const NewsCategory = () => {
   useEffect(() => {
     getAllBlogs();
   }, [category]);
+  useEffect(() => {
+    if (error) setTimeout(() => setError(""), 3000);
+  }, [error]);
 
   return (
     <>
       <Navbar />
       <hr />
-      {blogs.length < 1 ? (
-        <h1 style={{ textAlign: "center" }}>no blogs yet</h1>
+      {!!error?.length && <Alert title={error} />}
+      {blogs?.length < 1 ? (
+        <div style={{ minHeight: "80vh" }}>
+          <Loader />
+        </div>
       ) : (
         <div>
           {!loading && <Carousel blogs={blogs} />}
@@ -52,6 +63,7 @@ const NewsCategory = () => {
           {!loading && <News blogs={blogs} />}
         </div>
       )}
+      <NewsLetter />
       <Footer />
     </>
   );
