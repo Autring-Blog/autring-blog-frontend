@@ -5,6 +5,7 @@ import Footer from "../Layout/Footer/Footer";
 
 import share from "../../assets/icons/shareIcon.svg";
 import Navbar from "../Layout/Navbar/Navbar";
+import Loader from "../Loader/Loader";
 
 import "./NewsDetail.css";
 import { useState } from "react";
@@ -55,7 +56,9 @@ const NewsDetail = () => {
     <div className="news">
       <Navbar />
 
-      {blog && (
+      {!blog ? (
+        <Loader />
+      ) : (
         <div className="hero-section">
           <div className={`pop-up ${popUp ? "show" : "hide"}`}>
             {" "}
@@ -74,18 +77,10 @@ const NewsDetail = () => {
           </div>
         </div>
       )}
-      {/* News Content */}
       <div className="news-content">
         <div>
           <p className="lead">{blog && blog.paragraphDescription}</p>
-          {/* <p className='lead'>
-            The vessel - 262m (860ft) long and almost 60m (197ft) tall - is the
-            first aircraft carrier India has designed and built on its own. It
-            has the capacity to hold 30 fighter planes and helicopters.
-          </p>
-          */}
         </div>
-        {/* Articles */}
         <div className="articles">
           <h2>Related Articles</h2>
           <div className="news-card-list">
