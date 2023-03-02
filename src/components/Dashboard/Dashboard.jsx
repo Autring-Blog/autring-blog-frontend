@@ -10,6 +10,7 @@ import { Form_validation} from "./Form_validation";
 import "./Dashboard.css";
 import Loader from "../Loader/Loader";
 import { useNavigate } from "react-router-dom";
+import Alert from "../Alert/Alert";
 
 
 const onSubmit = async(values, actions)=>{
@@ -50,9 +51,11 @@ const Dashboard = () => {
 
   const [isEdit, setIsEdit] = useState(false);
   const [itemId, setItemId] = useState("");
+  const [error, setError] = useState("");
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
+<<<<<<< HEAD
 
   const{
     values,
@@ -77,17 +80,20 @@ const Dashboard = () => {
  
 
  
+=======
+  const Token = localStorage.getItem("token");
+>>>>>>> origin/main
   const getAllBlogs = async () => {
     setLoading(true);
     try {
       const res = await axios.get(
-        "https://api.theautring.com/api/v1/getallblog",
-        {
-          xhrFields: {
-            withCredentials: true,
-          },
-          withCredentials: true,
-        }
+        "https://api.theautring.com/api/v1/getallblog"
+        // {
+        //   xhrFields: {
+        //     withCredentials: true,
+        //   },
+        //   withCredentials: true,
+        // }
       );
 
       setBlogList(res.data.data.blog);
@@ -95,15 +101,73 @@ const Dashboard = () => {
       setLoading(false);
     } catch (err) {
       console.error("something went wrong", err);
+      setError(err.message);
     }
   };
   useEffect(() => {
     getAllBlogs();
     setIsEdit(false);
   }, []);
+  useEffect(() => {
+    if (error.length) setTimeout(() => setError(""), 3000);
+  }, [error]);
 
   const reset = () => {
+<<<<<<< HEAD
     values = ""
+=======
+    setPhoto(null);
+    setInPhotoTitle("");
+    setCategory("");
+    setInPhotoTitle("");
+    setMainHeading("");
+    setShortDescription("");
+    setParagraphDescription("");
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log({
+      inPhotoTitle,
+      photo,
+      mainHeading,
+      shortDescription,
+      category,
+    });
+
+    try {
+      const postBlog = await axios.post(
+        "https://api.theautring.com/api/v1/postablog",
+        {
+          photo,
+          inPhotoTitle,
+          category,
+          mainHeading,
+          shortDescription,
+          paragraphDescription,
+        },
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+            Authorization: `Bearer ${Token}`,
+          },
+          // xhrFields: {
+          //   withCredentials: true,
+          // },
+          // withCredentials: true,
+        }
+      );
+      console.log("hello");
+      const res = await postBlog;
+      reset();
+      getAllBlogs();
+
+      console.log(res.data);
+    } catch (error) {
+      console.error("error post the blog", error);
+      setError(error?.response?.data?.message);
+    }
+>>>>>>> origin/main
   };
 
   const deletePost = async (id) => {
@@ -112,16 +176,17 @@ const Dashboard = () => {
       try {
         await axios.delete(
           `https://api.theautring.com/api/v1/deleteblog/${id}`,
+
           {
-            xhrFields: {
-              withCredentials: true,
+            headers: {
+              Authorization: `Bearer ${Token}`,
             },
-            withCredentials: true,
           }
         );
         getAllBlogs();
       } catch (error) {
         console.error("Something was wrong", error);
+        setError(error?.response?.data?.message);
       }
     }
   };
@@ -156,18 +221,21 @@ const Dashboard = () => {
 
   const editPost = async () => {
     const id = itemId;
-
+    const config = {
+      headers: { Authorization: `Bearer ${Token}` },
+    };
     try {
       const updateBlog = await axios.patch(
         `https://api.theautring.com/api/v1/updateblog/${id}`,
+
         {
          values
         },
+
         {
-          xhrFields: {
-            withCredentials: true,
+          headers: {
+            Authorization: `Bearer ${Token}`,
           },
-          withCredentials: true,
         }
       );
       const updateFile = await axios.patch(
@@ -176,11 +244,12 @@ const Dashboard = () => {
         {
           headers: {
             "Content-Type": "multipart/form-data",
+            Authorization: `Bearer ${Token}`,
           },
-          xhrFields: {
-            withCredentials: true,
-          },
-          withCredentials: true,
+          // xhrFields: {
+          //   withCredentials: true,
+          // },
+          // withCredentials: true,
         }
       );
       const res = await updateBlog;
@@ -192,6 +261,7 @@ const Dashboard = () => {
       console.log(changeFile);
     } catch (error) {
       console.error("Something went wrong", error);
+      setError(error?.response?.data?.message);
     }
   };
   const handleLogOut = () => {
@@ -203,6 +273,7 @@ const Dashboard = () => {
 
   return (
     <>
+<<<<<<< HEAD
       <div className="dashboard">
         <div className="left-dashboard">
           <button className="btn-logout" onClick={handleLogOut}>
@@ -264,6 +335,85 @@ const Dashboard = () => {
         onBlur={handleBlur}
       />    
        {errors.Main_Heading && <p className="error">{errors.Main_Heading}</p>}
+=======
+      <button className="btn-logout" onClick={handleLogOut}>
+        logout
+      </button>
+      {!!error.length && <Alert title={error} />}
+      <div className="dashboard">
+        <div className="left-dashboard">
+          <form onSubmit={handleSubmit}>
+            <div className="form-control">
+              <input
+                type="file"
+                name="photo"
+                onChange={(e) => setPhoto(e.target.files[0])}
+                required
+              />
+            </div>
+            <div className="form-control">
+              <input
+                type="text"
+                id="photoTitle"
+                value={inPhotoTitle}
+                onChange={(e) => setInPhotoTitle(e.target.value)}
+                placeholder="Photo Title"
+              />
+            </div>
+            <div className="form-control">
+              <select
+                required
+                id="category"
+                value={category}
+                onChange={(e) => setCategory(e.target.value)}
+              >
+                <option value="category" disabled>
+                  Category
+                </option>
+                <option value="international">International</option>
+                <option value="national">National</option>
+                <option value="politics">Politics</option>
+                <option value="defence">Defence</option>
+                <option value="science and technology">
+                  Science and Technology
+                </option>
+                <option value="sports">Sports</option>
+                <option value="education">Education</option>
+                <option value="others">Others</option>
+              </select>
+            </div>
+            <div className="form-control">
+              <input
+                type="text"
+                id="mainHeading"
+                value={mainHeading}
+                onChange={(e) => setMainHeading(e.target.value)}
+                placeholder="Main Heading"
+                required
+              />
+            </div>
+            <div className="form-control">
+              <input
+                type="text"
+                id="shortDescription"
+                value={shortDescription}
+                onChange={(e) => setShortDescription(e.target.value)}
+                placeholder="Short Description"
+                required
+              />
+            </div>
+            <div className="form-control">
+              <textarea
+                type="text"
+                id="description"
+                value={paragraphDescription}
+                onChange={(e) => setParagraphDescription(e.target.value)}
+                placeholder="Description"
+                rows="10"
+                cols="30"
+              ></textarea>
+            </div>
+>>>>>>> origin/main
 
         <div className="form-control">
         <textarea         

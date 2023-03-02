@@ -8,10 +8,17 @@ import News from "../Home/News/News";
 import NewsLetter from "./NewsLetter/NewsLetter";
 import Carousel from "./Carousel/Carousel";
 import axios from "axios";
-const url = "https://api.theautring.com";
+import Alert from "../Alert/Alert";
+import Loader from "../Loader/Loader";
+
 const HomePage = () => {
+  const url = "https://api.theautring.com";
   const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  useEffect(() => {
+    if (error) setTimeout(() => setError(""), 3000);
+  }, [error]);
   const getAllBlogs = async () => {
     setLoading(true);
     try {
@@ -21,6 +28,7 @@ const HomePage = () => {
     } catch (error) {
       console.log(error);
       setLoading(false);
+      setError(error?.response?.data?.message);
     }
   };
 
@@ -32,9 +40,11 @@ const HomePage = () => {
     <>
       <Navbar />
       <hr />
-
-      {blogs.length < 1 ? (
-        <h1 style={{ textAlign: "center" }}>no blogs yet</h1>
+      {!!error?.length && <Alert title={error} />}
+      {blogs?.length < 1 ? (
+        <div style={{ minHeight: "80vh" }}>
+          <Loader />
+        </div>
       ) : (
         <div>
           {!loading && <Carousel blogs={blogs} />}
@@ -43,7 +53,6 @@ const HomePage = () => {
           {!loading && <News blogs={blogs} />}
         </div>
       )}
-
       <NewsLetter />
       <Footer />
     </>
