@@ -11,20 +11,20 @@
   height: 697px;
 }
 
-.icons {
+.hero-section .icons {
   position: absolute;
   top: 3rem;
   right: 10rem;
   display: flex;
 }
 
-.icon {
+.hero-section .icon {
   width: 30px;
   height: 30px;
   cursor: pointer;
 }
 
-.icon:not(:last-child) {
+.hero-section .icon:not(:last-child) {
   margin-right: 2rem;
 }
 

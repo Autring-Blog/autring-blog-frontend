@@ -3,8 +3,10 @@ import axios from "axios";
 import BlogCard from "../card/BlogCard";
 import Loader from "../../Loader/Loader";
 import Alert from "../../Alert/Alert";
+import "./Blog.css";
 
 const Blog = () => {
+  const [openForm, setOpenForm] = useState(false);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [blogList, setBlogList] = useState([]);
@@ -106,6 +108,7 @@ const Blog = () => {
   };
 
   const editValue = (id) => {
+    setOpenForm(true);
     const editPost = blogList.filter((item) => id === item._id);
     const {
       _id,
@@ -118,9 +121,6 @@ const Blog = () => {
     } = editPost[0];
     setIsEdit(true);
     setItemId(_id);
-
-    console.log(editPost);
-    console.log(editPost[0]);
     reset();
     const formData = new FormData();
     formData.append("photo", photo);
@@ -174,12 +174,29 @@ const Blog = () => {
       setError(error?.response?.data?.message);
     }
   };
+
+  const Add = () => {
+    setOpenForm(true);
+  };
+
   return (
     <div className="blogs">
       {!!error.length && <Alert title={error} />}
       <div className="dashboard">
-        <div className="left-dashboard">
+        <div className="top">
+          <h1>Post Blog</h1>
+          <span className="add-blog">
+            <button onClick={() => Add()}>+</button>
+          </span>
+        </div>
+        <div className={`left-dashboard ${openForm && "form"}`}>
           <form onSubmit={handleSubmit}>
+            <div className="top">
+              <h1>Post Blog</h1>
+              <span className="close" onClick={() => setOpenForm(false)}>
+                X
+              </span>
+            </div>
             <div className="form-control">
               <input
                 type="file"
@@ -250,11 +267,12 @@ const Blog = () => {
                 cols="30"
               ></textarea>
             </div>
-
             {!isEdit ? (
-              <button>Add</button>
+              <button className="add-blog" type="submit">
+                Add
+              </button>
             ) : (
-              <button type="button" onClick={editPost}>
+              <button type="submit" onClick={editPost} className="update-blog">
                 Edit
               </button>
             )}

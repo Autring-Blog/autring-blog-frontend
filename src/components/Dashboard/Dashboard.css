@@ -1,4 +1,5 @@
 .dashboard-container{
+	position: relative;
 	display: flex;
 	justify-content: center;
 	align-items: flex-start;
@@ -10,9 +11,10 @@
 .drawer{
 	position: sticky;
 	top: 0;
-	min-width: 25rem;
+	left: 0;
+	width: auto;
+	padding-left: 1rem;
 	min-height: 100vh;
-	width: fit-content;
 	display: flex;
 	justify-content: flex-end;
 	align-items: center;
@@ -30,11 +32,13 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	gap: 1rem;
 	font-weight: 600;
 	background-color: white;
 	border-radius: 10rem 0 0 10rem;
 	padding: 1rem 1.5rem;
 	cursor: pointer;
+	user-select: none;
 }
 .drawer ul li span{
 	display: grid;
@@ -44,13 +48,18 @@
 	width: 1.5rem;
 	height: 1.5rem;
 }
+.drawer ul li span.title{
+	display: none;
+}
+.drawer.active ul li span.title{
+	display: block;
+}
 .dashboard {
 	font-weight: 500;
 	height: 100%;
 	background-color: white;
 	color: #000;
-	width: 100%;
-	display: flex;
+  padding: 1rem;
 }
 
 .dashboard input,
@@ -90,7 +99,7 @@ select:focus {
 	margin: 1rem;
 }
 
-.dashboard button {
+.dashboard form :where(.add-blog, .udpate-blog) {
 	width: 100%;
 	padding: 0.9rem 0;
 	border-radius: 10px;
@@ -99,7 +108,7 @@ select:focus {
 	cursor: pointer;
 }
 
-.dashboard button:hover {
+.dashboard form :where(.add-blog, .udpate-blog) {
 	background-color: #eae609b8;
 }
 

@@ -1,5 +1,7 @@
+import "./Admin.css";
+
 const Admin = () => {
-  return <div>Admin</div>;
+  return <div className="admin">Admin</div>;
 };
 
 export default Admin;

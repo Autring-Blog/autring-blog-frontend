@@ -1,0 +1,34 @@
+.dashboard .top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-inline: 1rem;
+}
+.dashboard .left-dashboard{
+  display: none;
+}
+.dashboard .left-dashboard.form{
+  display: flex;
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  backdrop-filter: blur(0.5rem) brightness(0.5);
+  z-index: 2;
+}
+.dashboard .form form{
+  margin: auto;
+  background-color: white;
+  height: fit-content;
+  width: min(50rem, 90%);
+  margin-top: 5rem;
+  padding: 2rem;
+}
+.dashboard .form form .top{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.dashboard .form form .top span.close{
+  user-select: none;
+  cursor: pointer;
+}
