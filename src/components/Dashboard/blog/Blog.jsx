@@ -193,7 +193,15 @@ const Blog = () => {
           <form onSubmit={handleSubmit}>
             <div className="top">
               <h1>Post Blog</h1>
-              <span className="close" onClick={() => setOpenForm(false)}>
+              <span
+                className="close"
+                onClick={() => {
+                  setOpenForm(false);
+                  setIsEdit(false);
+                  setItemId("");
+                  reset();
+                }}
+              >
                 X
               </span>
             </div>
