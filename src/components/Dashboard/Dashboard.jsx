@@ -30,12 +30,6 @@ const Dashboard = () => {
     try {
       const res = await axios.get(
         "https://api.theautring.com/api/v1/getallblog"
-        // {
-        //   xhrFields: {
-        //     withCredentials: true,
-        //   },
-        //   withCredentials: true,
-        // }
       );
 
       setBlogList(res.data.data.blog);
@@ -89,18 +83,11 @@ const Dashboard = () => {
             "Content-Type": "multipart/form-data",
             Authorization: `Bearer ${Token}`,
           },
-          // xhrFields: {
-          //   withCredentials: true,
-          // },
-          // withCredentials: true,
         }
       );
-      console.log("hello");
       const res = await postBlog;
       reset();
       getAllBlogs();
-
-      console.log(res.data);
     } catch (error) {
       console.error("error post the blog", error);
       setError(error?.response?.data?.message);
@@ -161,9 +148,6 @@ const Dashboard = () => {
 
   const editPost = async () => {
     const id = itemId;
-    const config = {
-      headers: { Authorization: `Bearer ${Token}` },
-    };
     try {
       const updateBlog = await axios.patch(
         `https://api.theautring.com/api/v1/updateblog/${id}`,
@@ -190,10 +174,6 @@ const Dashboard = () => {
             "Content-Type": "multipart/form-data",
             Authorization: `Bearer ${Token}`,
           },
-          // xhrFields: {
-          //   withCredentials: true,
-          // },
-          // withCredentials: true,
         }
       );
       const res = await updateBlog;
@@ -201,8 +181,6 @@ const Dashboard = () => {
       getAllBlogs();
       reset();
       setIsEdit(false);
-      console.log(res);
-      console.log(changePhoto);
     } catch (error) {
       console.error("Something went wrong", error);
       setError(error?.response?.data?.message);
