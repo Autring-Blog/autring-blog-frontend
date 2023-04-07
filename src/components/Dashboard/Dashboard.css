@@ -1,5 +1,50 @@
+.dashboard-container{
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	min-height: 100vh;
+}
+.dashboard-container > div:last-child{
+	flex: 1;
+}
+.drawer{
+	position: sticky;
+	top: 0;
+	min-width: 25rem;
+	min-height: 100vh;
+	width: fit-content;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	background-color: #eae609;
+}
+.drawer ul{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-end;
+	gap: 1rem;
+}
+.drawer ul li {
+	list-style: none;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-weight: 600;
+	background-color: white;
+	border-radius: 10rem 0 0 10rem;
+	padding: 1rem 1.5rem;
+	cursor: pointer;
+}
+.drawer ul li span{
+	display: grid;
+	place-items: center;
+}
+.drawer ul li svg{
+	width: 1.5rem;
+	height: 1.5rem;
+}
 .dashboard {
-	font-family: inherit;
 	font-weight: 500;
 	height: 100%;
 	background-color: white;
@@ -17,7 +62,6 @@ select {
 	width: 100%;
 	border-radius: 10px;
 	border: 1px solid rgb(208, 208, 208);
-	/* border: none; */
 }
 
 .dashboard input:focus,
@@ -28,6 +72,8 @@ select:focus {
 }
 
 .left-dashboard form {
+	position: sticky;
+	top: 0;
 	padding: 1rem;
 	background-color: rgba(245, 245, 245, 0.348);
 	border-radius: 10px;
@@ -40,6 +86,7 @@ select:focus {
 
 .left-dashboard {
 	flex: 20%;
+	min-width: 300px;
 	margin: 1rem;
 }
 
@@ -55,8 +102,6 @@ select:focus {
 .dashboard button:hover {
 	background-color: #eae609b8;
 }
-
-/* right */
 
 .right-dashboard {
 	position: relative;
