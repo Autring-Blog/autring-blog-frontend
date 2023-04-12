@@ -32,3 +32,21 @@
   user-select: none;
   cursor: pointer;
 }
+.dashboard .top .add-blog{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 5rem;
+  background-color: #eae609;
+  color: black;
+  font-weight: 600;
+  font-size: 1.5rem;
+  cursor: pointer;
+  user-select: none;
+  transition: 0.15s;
+}
+.dashboard .top .add-blog:hover{
+  background-color: #f0f01a;
+}

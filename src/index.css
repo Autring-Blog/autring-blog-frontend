@@ -35,3 +35,11 @@ div::-webkit-scrollbar-track {
 div::-webkit-scrollbar-thumb {
   background-color: rgb(221, 221, 221);
 }
+button{
+  outline: none;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  user-select: none;
+  color: inherit;
+}

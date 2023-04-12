@@ -1,4 +1,5 @@
 import { logOut } from "../../../redux/actions/userAction";
+import "./Drawer.css";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { MdOutlineArticle } from "react-icons/md";

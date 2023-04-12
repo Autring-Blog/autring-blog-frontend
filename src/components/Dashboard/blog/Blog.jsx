@@ -52,14 +52,6 @@ const Blog = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log({
-      inPhotoTitle,
-      photo,
-      mainHeading,
-      shortDescription,
-      category,
-    });
-
     try {
       await axios.post(
         "https://api.theautring.com/api/v1/postablog",
@@ -80,6 +72,7 @@ const Blog = () => {
       );
       reset();
       getAllBlogs();
+      setOpenForm(false);
     } catch (error) {
       console.error("error post the blog", error);
       setError(error?.response?.data?.message);
@@ -186,7 +179,9 @@ const Blog = () => {
         <div className="top">
           <h1>Post Blog</h1>
           <span className="add-blog">
-            <button onClick={() => Add()}>+</button>
+            <button onClick={() => Add()} title="Post a new Blog">
+              +
+            </button>
           </span>
         </div>
         <div className={`left-dashboard ${openForm && "form"}`}>
