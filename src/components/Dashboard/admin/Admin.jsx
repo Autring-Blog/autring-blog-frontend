@@ -9,8 +9,18 @@ const Admin = () => {
     getAllUsers();
   }, []);
   const getAllUsers = async () => {
-    const { data } = await axios.get("http://localhost:4011/api/v1/getalluser");
-    setUsers(data.data.users);
+    try {
+      const { data } = await axios.get(
+        "http://localhost:4011/api/v1/getalluser"
+      );
+      setUsers(data.data.users);
+    } catch (err) {
+      const { data } = await axios.get(
+        "https://api.theautring.com/api/v1/getalluser"
+      );
+      setUsers(data.data.users);
+      console.log(err);
+    }
   };
   return (
     <div className="admin-panel">

@@ -1,4 +1,5 @@
 li.user {
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -47,4 +48,37 @@ li.user .user-role{
 li.user .user-role:hover{
   color: #6d6d6d;
   background-color: white;
+}
+li.user .more-menu{
+  position: absolute;
+  bottom: -1.5rem;
+  right: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 0.5rem;
+  color: black;
+  background-color: #fcfa86;
+  opacity: 0;
+  visibility: hidden;
+  translate: translateY(1rem);
+  overflow: hidden;
+  cursor: pointer;
+  transition: 0.15s;
+}
+li.user .more-menu.active{
+  opacity: 1;
+  visibility: visible;
+  translate: translateY(0);
+}
+li.user .more-menu .menu-item{
+  width: 100%;
+  height: 100%;
+  padding: 0.5rem 1rem;
+  transition: 0.15s;
+}
+li.user .more-menu .menu-item:hover{
+  color: white;
+  background-color: #6d6d6d;
 }
