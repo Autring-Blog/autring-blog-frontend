@@ -50,3 +50,57 @@
 .dashboard .top .add-blog:hover{
   background-color: #f0f01a;
 }
+.left-dashboard form {
+	position: sticky;
+	top: 0;
+	padding: 1rem;
+	background-color: rgba(255, 255, 255, 0.348);
+	border-radius: 10px;
+	box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
+}
+.left-dashboard .form-control {
+	margin-bottom: 1rem;
+}
+.left-dashboard {
+	flex: 20%;
+	min-width: 300px;
+	margin: 1rem;
+}
+.right-dashboard {
+	position: relative;
+	flex: 60%;
+}
+.blog-list {
+	display: grid;
+  place-items: center;
+	padding: 1rem;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 1rem;
+}
+/* media query */
+@media (max-width: 1280px) {
+	.blog-list {
+		grid-template-columns: repeat(2, 1fr);
+	}
+	.right-dashboard {
+		flex: 1;
+	}
+}
+@media (max-width: 980px) {
+	.blog-list {
+		grid-template-columns: 1fr;
+	}
+	.right-dashboard {
+		flex: 1;
+	}
+}
+@media (max-width: 680px) {
+	.dashboard {
+		display: block;
+	}
+	.right-dashboard {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+}
