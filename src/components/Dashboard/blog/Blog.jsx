@@ -25,7 +25,6 @@ const Blog = () => {
       const res = await axios.get(
         "https://api.theautring.com/api/v1/getallblog"
       );
-
       setBlogList(res.data.data.blog);
       setLoading(false);
     } catch (err) {
