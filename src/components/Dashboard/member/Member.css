@@ -76,6 +76,7 @@ li.user .more-menu .menu-item{
   width: 100%;
   height: 100%;
   padding: 0.5rem 1rem;
+  user-select: none;
   transition: 0.15s;
 }
 li.user .more-menu .menu-item:hover{

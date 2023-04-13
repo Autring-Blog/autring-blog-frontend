@@ -141,7 +141,6 @@ const Blog = () => {
           shortDescription,
           paragraphDescription,
         },
-
         {
           headers: {
             Authorization: `Bearer ${Token}`,
