@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;700&display=swap');
-
 body,
 h1,
 h2,
@@ -9,12 +8,10 @@ h4 {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-
 html,
 *,
 *::before,
@@ -23,15 +20,12 @@ html,
   padding: 0;
   box-sizing: border-box;
 }
-
 div::-webkit-scrollbar {
   height: 5px;
 }
-
 div::-webkit-scrollbar-track {
   background: transparent;
 }
-
 div::-webkit-scrollbar-thumb {
   background-color: rgb(221, 221, 221);
 }
@@ -42,4 +36,8 @@ button{
   cursor: pointer;
   user-select: none;
   color: inherit;
+}
+.container {
+  width: min(70rem, 90%);
+  margin: 0 auto;
 }
