@@ -62,7 +62,7 @@ function Navbar() {
               {navItem.name}
             </Link>
           ))}
-        <Link to={"/signin"} className="item">
+        <Link to={"/signin"} className="item call-to-action">
           Login
         </Link>
       </div>

@@ -1,0 +1,52 @@
+.drawer{
+	position: sticky;
+	top: 0;
+	left: 0;
+	width: auto;
+	padding-left: 1rem;
+	min-height: 100vh;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	background-color: #eae609;
+}
+.drawer ul{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-end;
+	gap: 1rem;
+}
+.drawer ul li {
+	list-style: none;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	width: 100%;
+	font-weight: 600;
+	background-color: white;
+	border-radius: 10rem 0 0 10rem;
+	padding: 1rem 1.5rem;
+	cursor: pointer;
+	user-select: none;
+}
+.drawer.active ul li {
+	gap: 1rem;
+}
+.drawer ul li span{
+	display: grid;
+	place-items: center;
+	white-space: nowrap;
+	overflow: hidden;
+	transition: width 0.15s;
+}
+.drawer ul li svg{
+	width: 1.5rem;
+	height: 1.5rem;
+}
+.drawer ul li span.title{
+	width: 0;
+}
+.drawer.active ul li span.title{
+	width: auto;
+}
