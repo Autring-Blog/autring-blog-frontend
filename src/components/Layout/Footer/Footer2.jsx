@@ -1,6 +1,6 @@
-import './Footer.css';
-
-const Footer = () => {
+import React from 'react'
+import './Footer2.css'
+const Footer2 = () => {
   return (
     <>
       <footer className='footer'>
@@ -18,56 +18,23 @@ const Footer = () => {
           </div>
           <div className='footer-content'>
             <h3 className='footer-subheading'>Useful Links</h3>
-            <div className='footer-list'>
             <ul>
               <li>
-                <a href='#home'>Home</a>
+                <a href='#navbar'>Go To Top</a>
               </li>
               <li>
-                <a href='#about'>About</a>
+                <a href='#trending'>Trending News</a>
               </li>
               <li>
-                <a href='#services'>Services</a>
+                <a href='#latest'>Latest News</a>
               </li>
               <li>
-                <a href='#portfolio'>Portfolio</a>
-              </li>
-              <li>
-                <a href='#contact'>Contact</a>
-              </li>
-              
-              <li>
-                <a href='#ourservices'>Our Services</a>
-              </li>
-              <li>
-                <a href='#expertteam'>Expert Team</a>
-              </li>
-              <li>
-                <a href='#contactus'>Conact us</a>
-              </li>
-              <li>
-                <a href='#latestnews'>Latest News</a>
+                <a href='#home-search'>Search</a>
               </li>
             </ul>
-            </div>
           </div>
           <div className='footer-content'>
-            <h3 className='footer-subheading'>Subscribe</h3>
-             <p>Don't miss to subscribe to our new feeds kindly fill the form below.</p>
-             <div className='input-wrapper'>
-             <div className='email'>
-              <input type="email" placeholder='Email Address'/>
-              <button className='send-button'>
-                <i class="fas fa-paper-plane"></i>
-              </button>
-             </div>
-             </div>
-          </div>
-          
-        </div>
-        <div className='follow'>
-        <div className='footer-content'>
-            <h3 className='footer-subheading'>Follow Us</h3>
+            <h3 className='footer-subheading'>Contact Us</h3>
             <p className='contactUs'>
             </p>
             <div className='footer-icons'>
@@ -77,10 +44,10 @@ const Footer = () => {
               <i className='large twitter icon' onClick={() => window.open('https://mobile.twitter.com/theautring', '_blank')}></i>
             </div>
           </div>
-          </div>
+        </div>
       </footer>
     </>
-  );
-};
+  )
+}
 
-export default Footer;
+export default Footer2

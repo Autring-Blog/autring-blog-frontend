@@ -5,7 +5,8 @@
   font-family: 'Quicksand', sans-serif;
   font: inherit;
   width: 100%;
-  background: #2b7a0b;
+  background: #151414;
+  border-top: 1px solid #373636;
 }
 
 .footer-heading {
@@ -13,12 +14,22 @@
 }
 
 .footer-subheading {
-  margin-bottom: 1.5rem;
+  display: inline-block;
+  position: relative;
   font-size: 1.5rem;
-  font-weight: 500;
-  text-decoration: underline;
+  font-weight: 700;
+  text-decoration: none;
 }
-
+.footer-subheading::after{
+  content: '';
+  position: absolute;
+  bottom: -10px; 
+  left: 0;
+  width: 50%;
+  height: 3px;
+  border-radius: 20px;
+  background-color: #E55807;
+}
 .footer .footer-content-list {
   display: flex;
   align-items: flex-start;
@@ -33,7 +44,13 @@
 }
 
 .footer-content-list .footer-content li {
+  
   list-style: none;
+}
+.footer-list ul{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
 }
 .footer-content-list .footer-content li:not(:last-child) {
   margin-bottom: 0.5rem;
@@ -42,7 +59,24 @@
 .footer-content-list .footer-content li a {
   color: inherit;
 }
-
+.email input{
+  height: 45px;
+  background: rgb(30, 29, 29);
+  box-shadow: 0px 0px 0px 0px;
+  
+}
+.email input::placeholder{
+  color : rgb(85, 83, 83);
+  padding-left: 25px;
+}
+.send-button{
+  background-color: #E55807;
+  height: 45px;
+  width: 55px;
+}
+.follow{
+  margin-top:3rem;
+}
 @media (max-width: 800px) {
   .footer .footer-content-list {
     display: block;

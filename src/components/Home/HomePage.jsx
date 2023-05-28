@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Navbar from "../Layout/Navbar/Navbar";
 import "./HomePage.css";
 import Footer from "../Layout/Footer/Footer";
+
 import Intro from "./Intro/Intro";
 import Trending from "./Trending/Trending";
 import News from "../Home/News/News";
@@ -55,6 +56,7 @@ const HomePage = () => {
       )}
       <NewsLetter />
       <Footer />
+
     </>
   );
 };
