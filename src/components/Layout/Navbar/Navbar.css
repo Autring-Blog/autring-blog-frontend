@@ -3,7 +3,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
+  gap: 2rem;
 }
 
 .brand-logo {
@@ -18,60 +18,33 @@
 }
 
 .item-list {
+  flex: 1;
   display: flex;
   align-items: center;
   justify-content: space-around;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
 }
 
 .item {
   color: #000;
   cursor: pointer;
-  transition: all 0.1s ease-in-out;
+  transition: 0.1s;
 }
-
+.item.call-to-action{
+  padding: 0.75rem 2rem;
+  background: #eae609;
+  border-radius: 5rem;
+}
+.item.call-to-action:hover{
+  color: #000;
+  box-shadow: 0 2px 0.5rem rgb(0, 0, 0, 0.25);
+}
 .item-list .item:not(:last-child) {
   margin-right: 2rem;
 }
 
 .item:hover {
   color: #2b7a0b;
-  font-weight: bold;
-}
-
-.navbar-search {
-  cursor: pointer;
-  width: 0;
-  display: flex;
-  justify-content: space-between;
-  align-self: center;
-  padding: 0.2rem 0.8rem;
-  gap: 1rem;
-  border-radius: 50px;
-  transition: all 0.4s ease-in-out;
-}
-
-.search__input {
-  flex-grow: 1;
-  border: none;
-  width: 100%;
-}
-
-.search__input:focus {
-  outline: none;
-}
-
-.navbar-search button {
-  width: 30px;
-  height: 30px;
-  cursor: pointer;
-  background-color: transparent;
-  border: none;
-}
-
-.navbar-search:focus-within {
-  width: 20rem;
-  border: 2px solid #2b7a0b;
 }
 
 .hamburger-menu {
@@ -151,7 +124,7 @@
   }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1200px) {
   .item-list {
     display: none;
   }
